@@ -3,6 +3,7 @@
   flex-direction: column;
   min-height: 100vh;
   text-align: center;
+  overflow: auto;
 }
 
 header {
@@ -10,11 +11,13 @@ header {
   flex-direction: column;
   flex-grow: 1;
   background-color: cadetblue;
+  min-height: 160px;
 }
 
 main {
   flex-grow: 8;
   background-color: coral;
+  min-height: 700px;
 }
 
 footer {
