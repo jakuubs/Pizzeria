@@ -17,6 +17,10 @@
     padding: 5px 50px 5px;
 }
 
+.navigation a:hover {
+    border-bottom: 3px solid black;
+}
+
 @media screen and (max-width: 600px) {
     .navigation nav {
         display: flex;

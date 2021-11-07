@@ -1,13 +1,22 @@
 .menu ul {
-    margin-top: 25px;
+    display: inline-block;
+    list-style: none;
+    padding-left: 0px;
 }
 
-.menu li {
-    text-align: left;
-    margin-left: 25px;
+.menu img {
+    float: right;
 }
 
-.loader {
-    margin: auto;
-    width: 50%;
+.menu button {
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+    display: block;
+    border: 3px solid #262625;
+    border-radius: 5px;
+}
+
+.menu button:hover {
+    cursor: pointer;
 }

@@ -1,0 +1,29 @@
+.pizza {
+    display: flex;
+    flex-direction: row;
+    background-color: beige;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 50px;
+    margin: 30px;
+    text-align: left;
+    min-width: 500px;
+}
+
+.pizzaInfo {
+    min-width: 200px;
+    margin-right: 50px;
+}
+
+.pizzaInfo ul {
+    min-height: 100px;
+}
+
+.pizzaImage {
+    flex-grow: 1;
+    max-height: 200px;
+    max-width: 200px;
+    margin-left: 50px;
+    border: 2px solid #1d0855;
+    border-radius: 10px;
+}
