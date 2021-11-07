@@ -6,12 +6,12 @@ import About from './About';
 import ErrorPage from './ErrorPage';
 import '../styles/Page.css';
 
-const Page = () => {
+const Page = ({pizzas, ingredients, isLoading, hasError}) => {
     return (
         <div>
             <Switch>
                 <Route path="/" exact component={HomePage} />
-                <Route path="/menu" component={Menu} />
+                <Route path="/menu" render={(props) => (<Menu {...props} pizzas={pizzas} ingredients={ingredients} isLoading={isLoading} hasError={hasError}/>) } />
                 <Route path="/about" component={About} />
                 <Route component={ErrorPage} />
             </Switch>

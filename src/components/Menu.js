@@ -4,40 +4,40 @@ import Loader from "react-loader-spinner";
 import "../styles/Menu.css";
 import Pizza from "./Pizza";
 
-const Menu = () => {
-  const [pizzas, setPizzas] = useState([]);
-  const [ingredients, setIngredients] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
+const Menu = ({pizzas, ingredients, isLoading, hasError}) => {
+  // const [pizzas, setPizzas] = useState([]);
+  // const [ingredients, setIngredients] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        await fetch("http://localhost:3333/api/pizza")
-          .then((response) => response.json())
-          .then((data) => setPizzas(data));
-      } catch (error) {
-        setHasError(true);
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       await fetch("http://localhost:3333/api/pizza")
+  //         .then((response) => response.json())
+  //         .then((data) => setPizzas(data));
+  //     } catch (error) {
+  //       setHasError(true);
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await fetch("http://localhost:3333/api/ingredient")
-          .then((response) => response.json())
-          .then((data) => setIngredients(data));
-      } catch (error) {
-        setHasError(true);
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       await fetch("http://localhost:3333/api/ingredient")
+  //         .then((response) => response.json())
+  //         .then((data) => setIngredients(data));
+  //     } catch (error) {
+  //       setHasError(true);
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="menu">
