@@ -41,7 +41,7 @@ const Menu = () => {
 
   return (
     <div className="menu">
-      <ul>
+      <ul className="pizzaList">
         {hasError && <p>Something went wrong!</p>}
         {isLoading ? (
           <Loader

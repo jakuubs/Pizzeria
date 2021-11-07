@@ -1,7 +1,8 @@
-.menu ul {
-    display: inline-block;
+.pizzaList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     list-style: none;
-    padding-left: 0px;
 }
 
 .menu img {
