@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   text-align: center;
   overflow: auto;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 header {

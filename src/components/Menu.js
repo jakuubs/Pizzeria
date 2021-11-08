@@ -1,10 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import "../styles/Menu.css";
 import Pizza from "./Pizza";
 
-const Menu = ({pizzas, ingredients, isLoading, hasError}) => {
+const Menu = ({pizzas, sauces, ingredients, isLoading, hasError}) => {
   // const [pizzas, setPizzas] = useState([]);
   // const [ingredients, setIngredients] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
@@ -41,6 +41,7 @@ const Menu = ({pizzas, ingredients, isLoading, hasError}) => {
 
   return (
     <div className="menu">
+      <h3>Pizzas</h3>
       <ul className="pizzaList">
         {hasError && <p>Something went wrong!</p>}
         {isLoading ? (
@@ -61,6 +62,23 @@ const Menu = ({pizzas, ingredients, isLoading, hasError}) => {
                 pizza.ingredients.includes(ingredient.id)
               )}
             />
+          ))
+        )}
+      </ul>
+      <h3>Sauces</h3>
+      <ul className="sauceList">
+        {hasError && <p>Something went wrong!</p>}
+        {isLoading ? (
+          <Loader
+            className="loader"
+            type="Circles"
+            color="#FFFFFF"
+            height={100}
+            width={100}
+          />
+        ) : (
+          sauces.map((sauce) => (
+            <li key={sauce.id}>{sauce.name}</li>
           ))
         )}
       </ul>

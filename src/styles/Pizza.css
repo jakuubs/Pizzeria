@@ -8,6 +8,7 @@
     margin: 30px;
     text-align: left;
     min-width: 500px;
+    max-height: 420px;
 }
 
 .pizzaInfo {
@@ -16,7 +17,7 @@
 }
 
 .pizzaInfo ul {
-    min-height: 100px;
+    min-height: 120px;
 }
 
 .pizzaImage {
