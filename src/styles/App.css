@@ -13,13 +13,13 @@ header {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background-color: #ca7e7e;
+  background-color: #e3dede;
   min-height: 160px;
 }
 
 main {
   flex-grow: 8;
-  background-color: #ebd6af;
+  background-color: #e3dede;
   min-height: 700px;
 }
 

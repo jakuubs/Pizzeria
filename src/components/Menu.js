@@ -42,7 +42,7 @@ const Menu = ({pizzas, sauces, ingredients, isLoading, hasError}) => {
   return (
     <div className="menu">
       <h3>Pizzas</h3>
-      <ul className="pizzaList">
+      <div className="pizzaList">
         {hasError && <p>Something went wrong!</p>}
         {isLoading ? (
           <Loader
@@ -64,9 +64,9 @@ const Menu = ({pizzas, sauces, ingredients, isLoading, hasError}) => {
             />
           ))
         )}
-      </ul>
+      </div>
       <h3>Sauces</h3>
-      <ul className="sauceList">
+      <div className="sauceList">
         {hasError && <p>Something went wrong!</p>}
         {isLoading ? (
           <Loader
@@ -81,7 +81,7 @@ const Menu = ({pizzas, sauces, ingredients, isLoading, hasError}) => {
             <li key={sauce.id}>{sauce.name}</li>
           ))
         )}
-      </ul>
+      </div>
     </div>
   );
 };

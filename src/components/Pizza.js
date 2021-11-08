@@ -24,7 +24,7 @@ const Pizza = ({ name, price, ingredients }) => {
   };
 
   return (
-    <li>
+    <div>
       <div className="pizza">
         <div className="pizzaInfo">
         <p>
@@ -46,7 +46,7 @@ const Pizza = ({ name, price, ingredients }) => {
         </div>
         <img className="pizzaImage" alt="pizza" src={images[name.toLowerCase()]} />
       </div>
-    </li>
+    </div>
   );
 };
 

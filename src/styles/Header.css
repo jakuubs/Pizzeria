@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Permanent+Marker&display=swap');
+
+.header {
+    font-size: 30px;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px #ff0000;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.header img {
+    width: 15%;
+    height: auto;
+    margin: 20px;
+    -webkit-filter: drop-shadow(2px 2px 2px #454545);
+    filter: drop-shadow(2px 2px 2px #454545);
+    transition: .3s;
+}
+
+.header img:hover {
+    cursor: pointer;
+    -webkit-filter: drop-shadow(3px 3px 3px #454545);
+    filter: drop-shadow(3px 3px 3px #454545);
+}

@@ -1,24 +1,25 @@
 .navigation {
     overflow: auto;
     width: 100%;
-    background-color: brown;
+    background-image: linear-gradient(to right, #575757, #017014);
 }
 
 .navigation nav {
     display: inline-block;
     padding: 10px;
     font-size: 25px;
-    background-color: white;
 }
 
 .navigation a {
-    color: black; 
+    color: #e0e0e0; 
     text-decoration: none;
     padding: 5px 50px 5px;
+    transition: .05s;
 }
 
 .navigation a:hover {
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid #ec1f26;
+    text-shadow: 1px 1px #ec1f26;
 }
 
 @media screen and (max-width: 600px) {
