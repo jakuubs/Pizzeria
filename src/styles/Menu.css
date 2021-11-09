@@ -29,15 +29,6 @@
     float: right;
 }
 
-.menu button {
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 10px;
-    display: block;
-    border: 3px solid #262625;
-    border-radius: 5px;
-}
-
 .menu button:hover {
     cursor: pointer;
 }
