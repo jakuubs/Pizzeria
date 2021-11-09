@@ -7,15 +7,16 @@
 
 .loader {
     grid-column: span 2;
+    align-self: center;
+    justify-self: center;
+    margin-top: 30px;
 }
 
 .sauceList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
     padding: 0px;
-}
-
-.loader {
-    align-self: center;
-    justify-self: center;
 }
 
 .menu h3 {

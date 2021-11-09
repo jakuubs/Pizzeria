@@ -1,4 +1,4 @@
-.pizza {
+.sauce {
     align-self: center;
     display: flex;
     flex-direction: row;
@@ -12,9 +12,9 @@
     max-height: 420px;
 }
 
-.pizza button {
+.sauce button {
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 70px;
     padding: 10px;
     display: block;
     border: 2px solid #262625;
@@ -23,7 +23,7 @@
     transition: background-color .5s;
 }
 
-.pizza button:hover {
+.sauce button:hover {
     background-color:#78d14e;
     background-image:linear-gradient(to right, #ffffff00 0%, #ffffff00 40%, #ffffffb3 100%);
     background-repeat:no-repeat;
@@ -31,28 +31,26 @@
     transition:background-size 1s, background-color 1s;
 }
 
-.pizza:nth-child(-n + 2) {
+.sauce:nth-child(-n + 2) {
     margin-top: 10px;
 }
 
-.pizza:nth-child(even) {
+.sauce:nth-child(even) {
     justify-self: start;
 }
 
-.pizza:nth-child(odd) {
+.sauce:nth-child(odd) {
     justify-self: end;
 }
 
-.pizzaInfo {
+.sauceInfo {
     min-width: 200px;
     margin-right: 50px;
 }
 
-.pizzaImage {
+.sauceImage {
     flex-grow: 1;
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 150px;
+    max-width: 150px;
     margin-left: 50px;
-    border: 2px solid #1d0855;
-    border-radius: 10px;
 }
