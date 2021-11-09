@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
 
 .app {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   min-height: 100vh;
   text-align: center;
   overflow: auto;
@@ -10,20 +9,16 @@
 }
 
 header {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  display: grid;
   background-color: #e3dede;
   min-height: 160px;
 }
 
 main {
-  flex-grow: 8;
   background-color: #e3dede;
   min-height: 700px;
 }
 
 footer {
-  flex-grow: 1;
   background-color: khaki;
 }

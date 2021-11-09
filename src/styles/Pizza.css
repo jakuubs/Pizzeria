@@ -1,14 +1,27 @@
 .pizza {
+    align-self: center;
     display: flex;
     flex-direction: row;
     background-color: beige;
     border: 3px solid black;
     border-radius: 10px;
     padding: 50px;
-    margin: 30px;
+    margin: 40px;
     text-align: left;
     min-width: 500px;
     max-height: 420px;
+}
+
+.pizza:nth-child(-n + 2) {
+    margin-top: 10px;
+}
+
+.pizza:nth-child(even) {
+    justify-self: start;
+}
+
+.pizza:nth-child(odd) {
+    justify-self: end;
 }
 
 .pizzaInfo {

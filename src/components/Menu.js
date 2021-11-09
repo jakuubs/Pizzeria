@@ -48,7 +48,7 @@ const Menu = ({pizzas, sauces, ingredients, isLoading, hasError}) => {
           <Loader
             className="loader"
             type="Circles"
-            color="#FFFFFF"
+            color="#ec1f26"
             height={100}
             width={100}
           />
@@ -72,7 +72,7 @@ const Menu = ({pizzas, sauces, ingredients, isLoading, hasError}) => {
           <Loader
             className="loader"
             type="Circles"
-            color="#FFFFFF"
+            color="#ec1f26"
             height={100}
             width={100}
           />

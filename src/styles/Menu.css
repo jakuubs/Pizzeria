@@ -1,13 +1,21 @@
 .pizzaList {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     list-style: none;
     padding: 0px;
 }
 
+.loader {
+    grid-column: span 2;
+}
+
 .sauceList {
     padding: 0px;
+}
+
+.loader {
+    align-self: center;
+    justify-self: center;
 }
 
 .menu h3 {
