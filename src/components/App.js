@@ -86,6 +86,11 @@ const App = () => {
     }
   };
 
+  const clearCart = () => {
+    setPizzas([]);
+    setSauces([]);
+  }
+
   return (
     <Router>
       <div className="app">
@@ -94,6 +99,7 @@ const App = () => {
             pizzas={pizzas}
             sauces={sauces}
             changeQuantity={changeQuantity}
+            clearCart={clearCart}
           />
           <Navigation />
         </header>
