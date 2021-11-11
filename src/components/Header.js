@@ -4,7 +4,7 @@ import '../styles/Header.css';
 import pizza from '../images/pizza_planet.png'
 import ShoppingCart from './ShoppingCart';
 
-const Header = ({pizzas, sauces}) => {
+const Header = ({pizzas, sauces, changeQuantity}) => {
 
     const [isCartVisible, setIsCartVisible] = useState(false);
 
@@ -22,7 +22,7 @@ const Header = ({pizzas, sauces}) => {
         <div className="header">
             <img alt="Pizza Planet" src={pizza} onClick={redirect}/>
             <button onClick={showShoppingCart}>Shopping Cart</button>
-            { isCartVisible && <ShoppingCart hideCart={showShoppingCart} pizzas={pizzas} sauces={sauces} /> }
+            { isCartVisible && <ShoppingCart hideCart={showShoppingCart} pizzas={pizzas} sauces={sauces} changeQuantity={changeQuantity} /> }
         </div>
     )
 }

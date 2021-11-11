@@ -1,5 +1,7 @@
 .shoppingCart {
     position: fixed;
+    text-align: left;
+    min-width: 250px;
     top: 10px;
     right: 10px;
     border: 3px solid black;
@@ -11,8 +13,23 @@
 
 .shoppingCart h3 {
     margin: 10px;
+    margin-right: 20px;
 }
 
-.shoppingCart button {
-    margin: 20px;
+.closeButton {
+    top: 5px;
+    right: 5px;
+}
+
+.cartItem {
+    position: relative;
+}
+
+.addition {
+    display: block;
+}
+
+.subtraction {
+    display: block;
+    left: 200px;
 }
