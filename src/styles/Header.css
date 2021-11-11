@@ -21,3 +21,9 @@
     -webkit-filter: drop-shadow(3px 3px 3px #454545);
     filter: drop-shadow(3px 3px 3px #454545);
 }
+
+.header button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
