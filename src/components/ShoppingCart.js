@@ -1,13 +1,20 @@
-import React from 'react'
+import React from "react";
 import "../styles/ShoppingCart.css";
 
-const ShoppingCart = (props) => {
-    return (
-        <div className="shoppingCart">
-            <h3>Cart items</h3>
-            <button onClick={props.hideCart}>XXXXX</button>
-        </div>
-    )
-}
+const ShoppingCart = ({ hideCart, pizzas, sauces }) => {
+  const cartItems = {
+    pizzas: [...pizzas],
+    sauces: [...sauces],
+  };
 
-export default ShoppingCart
+  return (
+    <div className="shoppingCart">
+      <button onClick={hideCart}>XXXXX</button>
+      <h3>Cart items</h3>
+      {cartItems.pizzas.map(pizza => <p>{pizza.name}</p>)}
+      {cartItems.sauces.map(sauce => <p>{sauce.name}</p>)}
+    </div>
+  );
+};
+
+export default ShoppingCart;

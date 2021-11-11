@@ -7,7 +7,7 @@ import About from "./About";
 import ErrorPage from "./ErrorPage";
 import "../styles/Page.css";
 
-const Page = () => {
+const Page = ({addPizzaToCart, addSauceToCart}) => {
   const [pizzas, setPizzas] = useState([]);
   const [sauces, setSauces] = useState([]);
   const [ingredients, setIngredients] = useState([]);
@@ -70,6 +70,8 @@ const Page = () => {
               ingredients={ingredients}
               isLoading={isLoading}
               hasError={hasError}
+              addPizzaToCart={addPizzaToCart}
+              addSauceToCart={addSauceToCart}
             />
           )}
         />

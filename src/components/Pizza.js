@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Pizza.css";
 
-const Pizza = ({ name, price, ingredients }) => {
+const Pizza = ({ id, name, price, ingredients, addPizzaToCart }) => {
   const images = {
     margherita:
       "https://amrestcdn.azureedge.net/ph-web-ordering/Pizza%20Hut%20PL/NEW%20WWW/314x314/PIZZA/PH_314x314_margherita-min_.jpg",
@@ -23,6 +23,10 @@ const Pizza = ({ name, price, ingredients }) => {
     cart: "https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png",
   };
 
+  const addPizza = (id, name, quantity, price) => {
+    addPizzaToCart(id, name, quantity, price);
+  }
+
   return (
       <div className="pizza">
         <div className="pizzaInfo">
@@ -34,7 +38,7 @@ const Pizza = ({ name, price, ingredients }) => {
             <li key={ingredient.id}>{ingredient.name}</li>
           ))}
         </ul>
-        <button>
+        <button onClick={() => addPizza(id, name, 1, price)}>
           <b>Add to cart</b>
           <img
             alt="cart"

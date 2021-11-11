@@ -5,7 +5,7 @@ import "../styles/Menu.css";
 import Pizza from "./Pizza";
 import Sauce from "./Sauce";
 
-const Menu = ({ pizzas, sauces, ingredients, isLoading, hasError }) => {
+const Menu = ({ pizzas, sauces, ingredients, isLoading, hasError, addPizzaToCart, addSauceToCart }) => {
   // const [pizzas, setPizzas] = useState([]);
   // const [ingredients, setIngredients] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
@@ -58,18 +58,20 @@ const Menu = ({ pizzas, sauces, ingredients, isLoading, hasError }) => {
             {pizzas.map((pizza) => (
               <Pizza
                 key={pizza.id}
+                id={pizza.id}
                 name={pizza.name}
                 price={pizza.price}
                 ingredients={ingredients.filter((ingredient) =>
                   pizza.ingredients.includes(ingredient.id)
                 )}
+                addPizzaToCart={addPizzaToCart}
               />
             ))}
           </div>
           <h3>Sauces</h3>
           <div className="sauceList">
             {sauces.map((sauce) => (
-              <Sauce key={sauce.id} name={sauce.name} price={sauce.price} />
+              <Sauce key={sauce.id} name={sauce.name} price={sauce.price} addSauceToCart={addSauceToCart} />
             ))}
           </div>
         </>
