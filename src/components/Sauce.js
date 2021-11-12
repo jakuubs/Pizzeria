@@ -1,7 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addSauceToCart } from "../actions/cart";
 import "../styles/Sauce.css";
 
-const Sauce = ({ id, name, price, addSauceToCart }) => {
+const Sauce = ({ id, name, price }) => {
+
+  const dispatch = useDispatch();
+
   const images = {
     czosnkowy:
       "https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/DE/PH/MENU/PreviewDI/Sour_Cream_dine-min.png",
@@ -12,17 +17,13 @@ const Sauce = ({ id, name, price, addSauceToCart }) => {
     cart: "https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png",
   };
 
-  const addSauce = (id, name, quantity, price) => {
-    addSauceToCart(id, name, quantity, price);
-  }
-
   return (
     <div className="sauce">
       <div className="sauceInfo">
         <p>
           <b>{name}</b> - <i>{price} PLN</i>
         </p>
-        <button onClick={() => addSauce(id, name, 1, price)}>
+        <button onClick={() => dispatch(addSauceToCart(id, name, 1, price))}>
           <b>Add to cart</b>
           <img
             alt="cart"

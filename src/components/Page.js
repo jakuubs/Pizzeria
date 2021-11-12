@@ -7,20 +7,12 @@ import About from "./About";
 import ErrorPage from "./ErrorPage";
 import "../styles/Page.css";
 
-const Page = ({ addPizzaToCart, addSauceToCart }) => {
+const Page = () => {
   return (
     <div>
       <Switch>
         <Route path="/" exact component={HomePage} />
-        <Route
-          path="/menu"
-          render={() => (
-            <Menu
-              addPizzaToCart={addPizzaToCart}
-              addSauceToCart={addSauceToCart}
-            />
-          )}
-        />
+        <Route path="/menu" component={Menu} />
         <Route path="/about" component={About} />
         <Route component={ErrorPage} />
       </Switch>

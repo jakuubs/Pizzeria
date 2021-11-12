@@ -1,13 +1,17 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changePizzaQuantity,
+  changeSauceQuantity,
+  clearCart,
+} from "../actions/cart";
 import "../styles/ShoppingCart.css";
 
-const ShoppingCart = ({
-  hideCart,
-  pizzas,
-  sauces,
-  changeQuantity,
-  clearCart,
-}) => {
+const ShoppingCart = ({ hideCart }) => {
+  const dispatch = useDispatch();
+  const pizzas = useSelector((state) => state.cart.pizzas);
+  const sauces = useSelector((state) => state.cart.sauces);
+
   const countTotal = () => {
     let total = 0;
     pizzas.forEach((pizza) => {
@@ -22,7 +26,7 @@ const ShoppingCart = ({
   const placeOrder = () => {
     if (pizzas.length > 0) {
       console.log("Order placed!");
-      clearCart();
+      dispatch(clearCart());
     } else if (pizzas.length === 0 && sauces.length > 0) {
       alert("You can't order only sauce!");
     } else {
@@ -37,36 +41,36 @@ const ShoppingCart = ({
       </button>
       <h3>Cart items</h3>
       {pizzas.map((pizza) => (
-        <div className="cartItem">
+        <div key={pizza.id} className="cartItem">
           <p>{pizza.name} </p>
           <button
             className="addition"
-            onClick={() => changeQuantity(pizza.id, "pizza", "addition")}
+            onClick={() => dispatch(changePizzaQuantity(pizza.id, "+"))}
           >
             +
           </button>
           <span>{pizza.quantity}</span>
           <button
             className="subtraction"
-            onClick={() => changeQuantity(pizza.id, "pizza", "subtraction")}
+            onClick={() => dispatch(changePizzaQuantity(pizza.id, "-"))}
           >
             -
           </button>
         </div>
       ))}
       {sauces.map((sauce) => (
-        <div className="cartItem">
+        <div key={sauce.id} className="cartItem">
           <p>{sauce.name}</p>
           <button
             className="addition"
-            onClick={() => changeQuantity(sauce.id, "sauce", "addition")}
+            onClick={() => dispatch(changeSauceQuantity(sauce.id, "+"))}
           >
             +
           </button>
           <span>{sauce.quantity}</span>
           <button
             className="subtraction"
-            onClick={() => changeQuantity(sauce.id, "sauce", "subtraction")}
+            onClick={() => dispatch(changeSauceQuantity(sauce.id, "-"))}
           >
             -
           </button>

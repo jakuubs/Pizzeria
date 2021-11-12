@@ -5,15 +5,14 @@ import "../styles/Menu.css";
 import Pizza from "./Pizza";
 import Sauce from "./Sauce";
 
-const Menu = ({ addPizzaToCart, addSauceToCart }) => {
+const Menu = () => {
   const pizzas = useSelector((state) => state.pizzas.products);
   const sauces = useSelector((state) => state.sauces.products);
   const ingredients = useSelector((state) => state.ingredients.products);
   const isLoading = useSelector((state) => {
     if (
       !state.pizzas.loading &&
-      !state.sauces.loading &&
-      !state.ingredients.loading
+      !state.sauces.loading
     )
       return false;
     else return true;
@@ -21,8 +20,7 @@ const Menu = ({ addPizzaToCart, addSauceToCart }) => {
   const hasError = useSelector((state) => {
     if (
       state.pizzas.error === null &&
-      state.sauces.error === null &&
-      state.ingredients.error === null
+      state.sauces.error === null
     )
       return false;
     else return true;
@@ -52,7 +50,6 @@ const Menu = ({ addPizzaToCart, addSauceToCart }) => {
                 ingredients={ingredients.filter((ingredient) =>
                   pizza.ingredients.includes(ingredient.id)
                 )}
-                addPizzaToCart={addPizzaToCart}
               />
             ))}
           </div>
@@ -61,9 +58,9 @@ const Menu = ({ addPizzaToCart, addSauceToCart }) => {
             {sauces.map((sauce) => (
               <Sauce
                 key={sauce.id}
+                id={sauce.id}
                 name={sauce.name}
                 price={sauce.price}
-                addSauceToCart={addSauceToCart}
               />
             ))}
           </div>

@@ -1,7 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addPizzaToCart } from "../actions/cart";
 import "../styles/Pizza.css";
 
-const Pizza = ({ id, name, price, ingredients, addPizzaToCart }) => {
+const Pizza = ({ id, name, price, ingredients }) => {
+
+  const dispatch = useDispatch();
+
   const images = {
     margherita:
       "https://amrestcdn.azureedge.net/ph-web-ordering/Pizza%20Hut%20PL/NEW%20WWW/314x314/PIZZA/PH_314x314_margherita-min_.jpg",
@@ -23,10 +28,6 @@ const Pizza = ({ id, name, price, ingredients, addPizzaToCart }) => {
     cart: "https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png",
   };
 
-  const addPizza = (id, name, quantity, price) => {
-    addPizzaToCart(id, name, quantity, price);
-  }
-
   return (
       <div className="pizza">
         <div className="pizzaInfo">
@@ -38,7 +39,7 @@ const Pizza = ({ id, name, price, ingredients, addPizzaToCart }) => {
             <li key={ingredient.id}>{ingredient.name}</li>
           ))}
         </ul>
-        <button onClick={() => addPizza(id, name, 1, price)}>
+        <button onClick={() => dispatch(addPizzaToCart(id, name, 1, price))}>
           <b>Add to cart</b>
           <img
             alt="cart"
