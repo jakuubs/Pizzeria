@@ -14,14 +14,18 @@ const Header = () => {
   };
 
   const showShoppingCart = () => {
-    setIsCartVisible(!isCartVisible);
+    setIsCartVisible(true);
   };
+
+  const hideShoppingCart = () => {
+    setIsCartVisible(false);
+  }
 
   return (
     <div className="header">
       <img alt="Pizza Planet" src={pizza} onClick={redirect} />
       <button onClick={showShoppingCart}>Shopping Cart</button>
-      {isCartVisible && <ShoppingCart hideCart={showShoppingCart} />}
+      {isCartVisible && <ShoppingCart hideCart={hideShoppingCart} />}
     </div>
   );
 };

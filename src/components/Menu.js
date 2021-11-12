@@ -10,18 +10,11 @@ const Menu = () => {
   const sauces = useSelector((state) => state.sauces.products);
   const ingredients = useSelector((state) => state.ingredients.products);
   const isLoading = useSelector((state) => {
-    if (
-      !state.pizzas.loading &&
-      !state.sauces.loading
-    )
-      return false;
+    if (!state.pizzas.loading && !state.sauces.loading) return false;
     else return true;
   });
   const hasError = useSelector((state) => {
-    if (
-      state.pizzas.error === null &&
-      state.sauces.error === null
-    )
+    if (state.pizzas.error === null && state.sauces.error === null)
       return false;
     else return true;
   });

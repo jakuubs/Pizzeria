@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import Menu from "./Menu";
 import About from "./About";
+import Checkout from "./Checkout";
 import ErrorPage from "./ErrorPage";
 import "../styles/Page.css";
 
@@ -14,6 +15,7 @@ const Page = () => {
         <Route path="/" exact component={HomePage} />
         <Route path="/menu" component={Menu} />
         <Route path="/about" component={About} />
+        <Route path="/checkout" component={Checkout} />
         <Route component={ErrorPage} />
       </Switch>
     </div>

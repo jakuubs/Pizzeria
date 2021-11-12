@@ -1,9 +1,9 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changePizzaQuantity,
   changeSauceQuantity,
-  clearCart,
 } from "../actions/cart";
 import "../styles/ShoppingCart.css";
 
@@ -11,6 +11,8 @@ const ShoppingCart = ({ hideCart }) => {
   const dispatch = useDispatch();
   const pizzas = useSelector((state) => state.cart.pizzas);
   const sauces = useSelector((state) => state.cart.sauces);
+
+  let history = useHistory();
 
   const countTotal = () => {
     let total = 0;
@@ -25,8 +27,8 @@ const ShoppingCart = ({ hideCart }) => {
 
   const placeOrder = () => {
     if (pizzas.length > 0) {
-      console.log("Order placed!");
-      dispatch(clearCart());
+      hideCart();
+      history.push("/checkout");
     } else if (pizzas.length === 0 && sauces.length > 0) {
       alert("You can't order only sauce!");
     } else {
