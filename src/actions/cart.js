@@ -5,20 +5,10 @@ export const addPizzaToCart = (id, name, price, additionalIngredients) => {
       id,
       name,
       price,
-      additionalIngredients
+      additionalIngredients,
     },
   };
 };
-
-// export const changePizzaQuantity = (id, operation) => {
-//   return {
-//     type: "CHANGE_PIZZA_QUANTITY",
-//     payload: {
-//       id,
-//       operation,
-//     },
-//   };
-// };
 
 export const addSauceToCart = (id, name, quantity, price) => {
   return {

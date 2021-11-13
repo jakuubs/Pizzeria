@@ -3,12 +3,16 @@ import Loader from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { addPizzaToCart } from "../actions/cart";
+import images from "../images";
 
 const PizzaPage = ({ match, location }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [additionalIngredients, setAdditionalIngredients] = useState(location.state.ingredients);
+  const [additionalIngredients, setAdditionalIngredients] = useState(() => {
+    if (location.state === undefined) return [];
+    else return location.state.ingredients;
+  });
 
   const pizza = useSelector((state) =>
     state.pizzas.products.find((p) => p.id === match.params.id)
@@ -78,8 +82,8 @@ const PizzaPage = ({ match, location }) => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="pizzaPage">
@@ -95,7 +99,10 @@ const PizzaPage = ({ match, location }) => {
       ) : (
         <div>
           <h3>{pizza.name}</h3>
-          <img alt={`Pizza ${pizza.name}`} src={location.state.image} />
+          <img
+            alt={`Pizza ${pizza.name}`}
+            src={images[pizza.name.toLowerCase()]}
+          />
           <ul>
             {pizzaIngredients.map((ingredient) => (
               <li key={ingredient.id}>{ingredient.name}</li>

@@ -1,12 +1,9 @@
 import React from "react";
-// import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-// import { addPizzaToCart } from "../actions/cart";
 import images from "../images";
 import "../styles/Pizza.css";
 
 const Pizza = ({ id, name, price, ingredients }) => {
-  // const dispatch = useDispatch();
   const history = useHistory();
 
   return (
@@ -24,7 +21,6 @@ const Pizza = ({ id, name, price, ingredients }) => {
           onClick={() => {
             history.push({
               pathname: `/pizza/${id}`,
-              state: { image: images[name.toLowerCase()], ingredients: [] },
             });
           }}
         >

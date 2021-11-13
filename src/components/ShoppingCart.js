@@ -1,11 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  // changePizzaQuantity,
-  changeSauceQuantity,
-} from "../actions/cart";
-import images from "../images";
+import { changeSauceQuantity } from "../actions/cart";
 import "../styles/ShoppingCart.css";
 
 const ShoppingCart = ({ hideCart }) => {
@@ -17,19 +13,21 @@ const ShoppingCart = ({ hideCart }) => {
 
   let history = useHistory();
 
-  const editPizza = (id, name, additionalIngredients) => {
+  const editPizza = (id, additionalIngredients) => {
     history.push({
       pathname: `/pizza/${id}`,
-      state: { image: images[name.toLowerCase()], ingredients: additionalIngredients },
+      state: additionalIngredients,
     });
-  }
+  };
 
   const countTotal = () => {
     let total = 0;
     pizzas.forEach((pizza) => {
       let ingredientsTotal = 0;
       pizza.additionalIngredients.forEach((id) => {
-        ingredientsTotal += ingredients.find(ingredient => ingredient.id === id).price;
+        ingredientsTotal += ingredients.find(
+          (ingredient) => ingredient.id === id
+        ).price;
       });
       total += pizza.price + ingredientsTotal;
     });
@@ -59,24 +57,23 @@ const ShoppingCart = ({ hideCart }) => {
       {pizzas.map((pizza) => (
         <div key={pizza.id} className="cartItem">
           <p>{pizza.name} </p>
-          {/* <button
-            className="addition"
-            onClick={() => dispatch(changePizzaQuantity(pizza.id, "+"))}
-          >
-            +
-          </button>
-          <span>{pizza.quantity}</span>
-          <button
-            className="subtraction"
-            onClick={() => dispatch(changePizzaQuantity(pizza.id, "-"))}
-          >
-            -
-          </button> */}
-          { pizza.additionalIngredients.length > 0 ? <p>Additional ingredients:</p> : false}
+          {pizza.additionalIngredients.length > 0 ? (
+            <p>Additional ingredients:</p>
+          ) : (
+            false
+          )}
           <ul>
-            {pizza.additionalIngredients.map(id => <li key={id}>{ingredients.find(ingredient => ingredient.id === id).name}</li>)}
+            {pizza.additionalIngredients.map((id) => (
+              <li key={id}>
+                {ingredients.find((ingredient) => ingredient.id === id).name}
+              </li>
+            ))}
           </ul>
-          <button onClick={() => editPizza(pizza.id, pizza.name, pizza.additionalIngredients)}>Edit</button>
+          <button
+            onClick={() => editPizza(pizza.id, pizza.additionalIngredients)}
+          >
+            Edit
+          </button>
         </div>
       ))}
       {sauces.map((sauce) => (
