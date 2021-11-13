@@ -1,4 +1,4 @@
-export const addPizzaToCart = (id, name, quantity, price) => {
+export const addPizzaToCart = (id, name, quantity, price, additionalIngredients) => {
   return {
     type: "ADD_PIZZA_TO_CART",
     payload: {
@@ -6,6 +6,7 @@ export const addPizzaToCart = (id, name, quantity, price) => {
       name,
       quantity,
       price,
+      additionalIngredients
     },
   };
 };

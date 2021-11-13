@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { addPizzaToCart } from "../actions/cart";
+// import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+// import { addPizzaToCart } from "../actions/cart";
 import "../styles/Pizza.css";
 
 const Pizza = ({ id, name, price, ingredients }) => {
-
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const history = useHistory();
 
   const images = {
     margherita:
@@ -29,8 +30,8 @@ const Pizza = ({ id, name, price, ingredients }) => {
   };
 
   return (
-      <div className="pizza">
-        <div className="pizzaInfo">
+    <div className="pizza">
+      <div className="pizzaInfo">
         <p>
           <b>{name}</b> - <i>{price} PLN</i>
         </p>
@@ -39,7 +40,14 @@ const Pizza = ({ id, name, price, ingredients }) => {
             <li key={ingredient.id}>{ingredient.name}</li>
           ))}
         </ul>
-        <button onClick={() => dispatch(addPizzaToCart(id, name, 1, price))}>
+        <button
+          onClick={() => {
+            history.push({
+              pathname: `/pizza/${id}`,
+              state: images[name.toLowerCase()],
+            });
+          }}
+        >
           <b>Add to cart</b>
           <img
             alt="cart"
@@ -47,9 +55,13 @@ const Pizza = ({ id, name, price, ingredients }) => {
             style={{ height: "15px", width: "15px", marginLeft: "7px" }}
           />
         </button>
-        </div>
-        <img className="pizzaImage" alt="pizza" src={images[name.toLowerCase()]} />
       </div>
+      <img
+        className="pizzaImage"
+        alt="pizza"
+        src={images[name.toLowerCase()]}
+      />
+    </div>
   );
 };
 
