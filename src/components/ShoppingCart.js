@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  changePizzaQuantity,
+  // changePizzaQuantity,
   changeSauceQuantity,
 } from "../actions/cart";
 import "../styles/ShoppingCart.css";
@@ -11,6 +11,8 @@ const ShoppingCart = ({ hideCart }) => {
   const dispatch = useDispatch();
   const pizzas = useSelector((state) => state.cart.pizzas);
   const sauces = useSelector((state) => state.cart.sauces);
+
+  const ingredients = useSelector((state) => state.ingredients.products);
 
   let history = useHistory();
 
@@ -45,7 +47,7 @@ const ShoppingCart = ({ hideCart }) => {
       {pizzas.map((pizza) => (
         <div key={pizza.id} className="cartItem">
           <p>{pizza.name} </p>
-          <button
+          {/* <button
             className="addition"
             onClick={() => dispatch(changePizzaQuantity(pizza.id, "+"))}
           >
@@ -57,7 +59,11 @@ const ShoppingCart = ({ hideCart }) => {
             onClick={() => dispatch(changePizzaQuantity(pizza.id, "-"))}
           >
             -
-          </button>
+          </button> */}
+          <p>Additional ingredients:</p>
+          <ul>
+            {pizza.additionalIngredients.map(id => <li key={id}>{ingredients.find(ingredient => ingredient.id === id).name}</li>)}
+          </ul>
         </div>
       ))}
       {sauces.map((sauce) => (
