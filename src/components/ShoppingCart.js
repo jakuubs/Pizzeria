@@ -19,7 +19,11 @@ const ShoppingCart = ({ hideCart }) => {
   const countTotal = () => {
     let total = 0;
     pizzas.forEach((pizza) => {
-      total += pizza.quantity * pizza.price;
+      let ingredientsTotal = 0;
+      pizza.additionalIngredients.forEach((id) => {
+        ingredientsTotal += ingredients.find(ingredient => ingredient.id === id).price;
+      });
+      total += pizza.price + ingredientsTotal;
     });
     sauces.forEach((sauce) => {
       total += sauce.quantity * sauce.price;
@@ -60,7 +64,7 @@ const ShoppingCart = ({ hideCart }) => {
           >
             -
           </button> */}
-          <p>Additional ingredients:</p>
+          { pizza.additionalIngredients.length > 0 ? <p>Additional ingredients:</p> : false}
           <ul>
             {pizza.additionalIngredients.map(id => <li key={id}>{ingredients.find(ingredient => ingredient.id === id).name}</li>)}
           </ul>
