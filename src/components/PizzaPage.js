@@ -61,8 +61,20 @@ const PizzaPage = ({ match, location }) => {
   };
 
   const addPizzaToOrder = () => {
-    dispatch(addPizzaToCart(pizza.id, pizza.name, pizza.price, additionalIngredients));
+    dispatch(
+      addPizzaToCart(pizza.id, pizza.name, pizza.price, additionalIngredients)
+    );
     history.push("/menu");
+  };
+
+  const countTotal = () => {
+    let ingredientsPrice = 0;
+    additionalIngredients.forEach((id) => {
+      ingredientsPrice += ingredients.find(
+        (ingredient) => ingredient.id === id
+      ).price;
+    });
+    return pizza.price + ingredientsPrice;
   };
 
   return (
@@ -90,7 +102,7 @@ const PizzaPage = ({ match, location }) => {
             <ul>
               {ingredients.map((ingredient) => (
                 <li key={ingredient.id}>
-                  {ingredient.name}
+                  {ingredient.name} {ingredient.price} PLN
                   <button
                     onClick={() => removeIngredient(ingredient.id)}
                     disabled={
@@ -115,6 +127,7 @@ const PizzaPage = ({ match, location }) => {
               ))}
             </ul>
           </div>
+          <p>Total: {countTotal()}</p>
           <button onClick={() => addPizzaToOrder()}>Add to order</button>
         </div>
       )}
