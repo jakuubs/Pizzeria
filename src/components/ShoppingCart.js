@@ -5,6 +5,7 @@ import {
   // changePizzaQuantity,
   changeSauceQuantity,
 } from "../actions/cart";
+import images from "../images";
 import "../styles/ShoppingCart.css";
 
 const ShoppingCart = ({ hideCart }) => {
@@ -15,6 +16,13 @@ const ShoppingCart = ({ hideCart }) => {
   const ingredients = useSelector((state) => state.ingredients.products);
 
   let history = useHistory();
+
+  const editPizza = (id, name, additionalIngredients) => {
+    history.push({
+      pathname: `/pizza/${id}`,
+      state: { image: images[name.toLowerCase()], ingredients: additionalIngredients },
+    });
+  }
 
   const countTotal = () => {
     let total = 0;
@@ -68,6 +76,7 @@ const ShoppingCart = ({ hideCart }) => {
           <ul>
             {pizza.additionalIngredients.map(id => <li key={id}>{ingredients.find(ingredient => ingredient.id === id).name}</li>)}
           </ul>
+          <button onClick={() => editPizza(pizza.id, pizza.name, pizza.additionalIngredients)}>Edit</button>
         </div>
       ))}
       {sauces.map((sauce) => (
