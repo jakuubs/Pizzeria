@@ -22,11 +22,11 @@ const ShoppingCart = ({ hideCart }) => {
   };
 
   const placeOrder = () => {
-    if (pizzas.length > 0) {
+    if (pizzas.length > 0 && sauces.length > 0) {
       hideCart();
       history.push("/checkout");
-    } else if (pizzas.length === 0 && sauces.length > 0) {
-      alert("You can't order only sauce!");
+    } else if (pizzas.length <= 0 || sauces.length <= 0) {
+      alert("You have to add at least one pizza and at least one sauce");
     } else {
       alert("Your order is empty!");
     }

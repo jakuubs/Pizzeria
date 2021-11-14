@@ -32,10 +32,16 @@ const Checkout = () => {
         if (response.ok) {
           setIsSending(false);
           dispatch(clearCart());
-          history.push("/");
+          history.push({
+            pathname: "/",
+            state: "success",
+          });
         } else {
           setIsSending(false);
-          history.push("/");
+          history.push({
+            pathname: "/",
+            state: "error",
+          });
           return response.json();
         }
       })
