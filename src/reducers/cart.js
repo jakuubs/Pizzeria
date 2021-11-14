@@ -11,32 +11,6 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         pizzas: [...state.pizzas, action.payload],
       };
-    // case "CHANGE_PIZZA_QUANTITY":
-    //   const updatedPizzas = [...state.pizzas];
-    //   index = updatedPizzas.findIndex(
-    //     (pizza) => pizza.id === action.payload.id
-    //   );
-    //   if (action.payload.operation === "+") {
-    //     const updatedQuantity = updatedPizzas[index].quantity + 1;
-    //     updatedPizzas[index] = {
-    //       ...updatedPizzas[index],
-    //       quantity: updatedQuantity,
-    //     };
-    //   } else if (action.payload.operation === "-") {
-    //     const updatedQuantity = updatedPizzas[index].quantity - 1;
-    //     if (updatedQuantity > 0)
-    //       updatedPizzas[index] = {
-    //         ...updatedPizzas[index],
-    //         quantity: updatedQuantity,
-    //       };
-    //     else {
-    //       updatedPizzas.splice(index, 1);
-    //     }
-    //   }
-    //   return {
-    //     ...state,
-    //     pizzas: updatedPizzas,
-    //   };
     case "ADD_SAUCE_TO_CART":
       index = state.sauces.findIndex((sauce) => sauce.id === action.payload.id);
       if (index !== -1) {
