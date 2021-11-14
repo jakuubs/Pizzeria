@@ -5,14 +5,11 @@ import { useHistory } from "react-router";
 import { addPizzaToCart } from "../actions/cart";
 import images from "../images";
 
-const PizzaPage = ({ match, location }) => {
+const PizzaPage = ({ match }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [additionalIngredients, setAdditionalIngredients] = useState(() => {
-    if (location.state === undefined) return [];
-    else return location.state;
-  });
+  const [additionalIngredients, setAdditionalIngredients] = useState([]);
 
   const pizza = useSelector((state) =>
     state.pizzas.products.find((p) => p.id === match.params.id)

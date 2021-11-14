@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { changeSauceQuantity } from "../actions/cart";
+import { deletePizzaFromCart, changeSauceQuantity } from "../actions/cart";
 import { getAdditionalIngredients, countTotal } from "../utils";
 import "../styles/ShoppingCart.css";
 
@@ -14,11 +14,8 @@ const ShoppingCart = ({ hideCart }) => {
 
   let history = useHistory();
 
-  const editPizza = (id, additionalIngredients) => {
-    history.push({
-      pathname: `/pizza/${id}`,
-      state: additionalIngredients,
-    });
+  const deletePizza = (index) => {
+    dispatch(deletePizzaFromCart(index));
   };
 
   const placeOrder = () => {
@@ -41,7 +38,7 @@ const ShoppingCart = ({ hideCart }) => {
         <h3>Cart items</h3>
       </div>
       <div className="cartContent">
-        {pizzas.map((pizza) => (
+        {pizzas.map((pizza, index) => (
           <div key={pizza.id} className="cartItem">
             <p>{pizza.name} </p>
             {pizza.additionalIngredients.length > 0 ? (
@@ -50,17 +47,14 @@ const ShoppingCart = ({ hideCart }) => {
               false
             )}
             <ul>
-              {getAdditionalIngredients(ingredients, pizza.additionalIngredients).map(
-                (ingredient) => (
-                  <li key={ingredient}>{ingredient}</li>
-                )
-              )}
+              {getAdditionalIngredients(
+                ingredients,
+                pizza.additionalIngredients
+              ).map((ingredient) => (
+                <li key={ingredient}>{ingredient}</li>
+              ))}
             </ul>
-            <button
-              onClick={() => editPizza(pizza.id, pizza.additionalIngredients)}
-            >
-              Edit
-            </button>
+            <button onClick={() => deletePizza(index)}>Delete</button>
           </div>
         ))}
         {sauces.map((sauce) => (
