@@ -10,6 +10,13 @@ export const addPizzaToCart = (id, name, price, additionalIngredients) => {
   };
 };
 
+export const deletePizzaFromCart = (index) => {
+  return {
+    type: "DELETE_PIZZA_FROM_CART",
+    payload: index
+  }
+}
+
 export const addSauceToCart = (id, name, quantity, price) => {
   return {
     type: "ADD_SAUCE_TO_CART",
@@ -20,7 +27,7 @@ export const addSauceToCart = (id, name, quantity, price) => {
       price,
     },
   };
-};
+}
 
 export const changeSauceQuantity = (id, operation) => {
   return {

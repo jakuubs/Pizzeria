@@ -11,6 +11,13 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         pizzas: [...state.pizzas, action.payload],
       };
+    case "DELETE_PIZZA_FROM_CART":
+      const pizzasInCart = [...state.pizzas];
+      pizzasInCart.splice(action.payload, 1);
+      return {
+        ...state,
+        pizzas: pizzasInCart,
+      }
     case "ADD_SAUCE_TO_CART":
       index = state.sauces.findIndex((sauce) => sauce.id === action.payload.id);
       if (index !== -1) {
