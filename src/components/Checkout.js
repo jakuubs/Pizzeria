@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { clearCart } from "../actions/cart";
+import { orderFailed, orderSuccessful } from "../actions/order";
 import { countTotal, getAdditionalIngredients } from "../utils";
 
 const Checkout = () => {
@@ -13,7 +14,6 @@ const Checkout = () => {
 
   const pizzas = useSelector((state) => state.cart.pizzas);
   const sauces = useSelector((state) => state.cart.sauces);
-
   const ingredients = useSelector((state) => state.ingredients.products);
 
   const history = useHistory();
@@ -32,16 +32,12 @@ const Checkout = () => {
         if (response.ok) {
           setIsSending(false);
           dispatch(clearCart());
-          history.push({
-            pathname: "/",
-            state: "success",
-          });
+          history.push("/");
+          dispatch(orderSuccessful());
         } else {
           setIsSending(false);
-          history.push({
-            pathname: "/",
-            state: "error",
-          });
+          history.push("/");
+          dispatch(orderFailed());
           return response.json();
         }
       })

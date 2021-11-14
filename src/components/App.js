@@ -21,9 +21,14 @@ import Header from "./Header";
 import Navigation from "./Navigation";
 import Page from "./Page";
 import Footer from "./Footer";
+import PopUp from "./PopUp";
+import { useSelector } from "react-redux";
+import { clearOrder } from "../actions/order";
 
 const App = () => {
   const dispatch = useDispatch();
+
+  const isDisplayed = useSelector((state) => state.order.isDisplayed);
 
   useEffect(() => {
     const fetchPizzas = () => {
@@ -82,9 +87,21 @@ const App = () => {
     fetchIngredients();
   }, [dispatch]);
 
+  useEffect(() => {
+    if (isDisplayed) {
+      const timer = setTimeout(() => {
+        dispatch(clearOrder());
+      }, 4000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [dispatch, isDisplayed]);
+
   return (
     <Router>
       <div className="app">
+        {isDisplayed && <PopUp />}
         <header>
           <Header />
           <Navigation />
