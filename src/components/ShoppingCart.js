@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSauceQuantity } from "../actions/cart";
-import { getAdditionalIngredients } from "../utils";
+import { getAdditionalIngredients, countTotal } from "../utils";
 import "../styles/ShoppingCart.css";
 
 const ShoppingCart = ({ hideCart }) => {
@@ -19,23 +19,6 @@ const ShoppingCart = ({ hideCart }) => {
       pathname: `/pizza/${id}`,
       state: additionalIngredients,
     });
-  };
-
-  const countTotal = () => {
-    let total = 0;
-    pizzas.forEach((pizza) => {
-      let ingredientsTotal = 0;
-      pizza.additionalIngredients.forEach((id) => {
-        ingredientsTotal += ingredients.find(
-          (ingredient) => ingredient.id === id
-        ).price;
-      });
-      total += pizza.price + ingredientsTotal;
-    });
-    sauces.forEach((sauce) => {
-      total += sauce.quantity * sauce.price;
-    });
-    return total;
   };
 
   const placeOrder = () => {
@@ -101,7 +84,7 @@ const ShoppingCart = ({ hideCart }) => {
       </div>
       <div className="order">
         <h4>Total</h4>
-        <p>{countTotal()} PLN</p>
+        <p>{countTotal(pizzas, sauces, ingredients)} PLN</p>
         <button className="orderPlacement" onClick={placeOrder}>
           Place an order
         </button>
