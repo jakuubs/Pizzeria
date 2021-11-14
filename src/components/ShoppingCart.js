@@ -20,6 +20,26 @@ const ShoppingCart = ({ hideCart }) => {
     });
   };
 
+  const getAdditionalIngredients = (addedIngredients) => {
+    const additionalIngredients = addedIngredients.reduce(
+      (ingredientsQuantity, e) => {
+        ingredientsQuantity[e] = (ingredientsQuantity[e] || 0) + 1;
+        return ingredientsQuantity;
+      },
+      {}
+    );
+    let ingredientsList = [];
+    for (const [ingredient, quantity] of Object.entries(
+      additionalIngredients
+    )) {
+      const listedIngredient = `${
+        ingredients.find((i) => ingredient === i.id).name
+      } ${quantity > 1 ? "x" + quantity : ""}`.trim();
+      ingredientsList.push(listedIngredient);
+    }
+    return ingredientsList;
+  };
+
   const countTotal = () => {
     let total = 0;
     pizzas.forEach((pizza) => {
@@ -50,56 +70,60 @@ const ShoppingCart = ({ hideCart }) => {
 
   return (
     <div className="shoppingCart">
-      <button className="closeButton" onClick={hideCart}>
-        XXXXX
-      </button>
-      <h3>Cart items</h3>
-      {pizzas.map((pizza) => (
-        <div key={pizza.id} className="cartItem">
-          <p>{pizza.name} </p>
-          {pizza.additionalIngredients.length > 0 ? (
-            <p>Additional ingredients:</p>
-          ) : (
-            false
-          )}
-          <ul>
-            {pizza.additionalIngredients.map((id) => (
-              <li key={id}>
-                {ingredients.find((ingredient) => ingredient.id === id).name}
-              </li>
-            ))}
-          </ul>
-          <button
-            onClick={() => editPizza(pizza.id, pizza.additionalIngredients)}
-          >
-            Edit
-          </button>
-        </div>
-      ))}
-      {sauces.map((sauce) => (
-        <div key={sauce.id} className="cartItem">
-          <p>{sauce.name}</p>
-          <button
-            className="addition"
-            onClick={() => dispatch(changeSauceQuantity(sauce.id, "+"))}
-          >
-            +
-          </button>
-          <span>{sauce.quantity}</span>
-          <button
-            className="subtraction"
-            onClick={() => dispatch(changeSauceQuantity(sauce.id, "-"))}
-          >
-            -
-          </button>
-        </div>
-      ))}
       <div>
+        <button className="closeButton" onClick={hideCart}>
+          XXXXX
+        </button>
+        <h3>Cart items</h3>
+      </div>
+      <div className="cartContent">
+        {pizzas.map((pizza) => (
+          <div key={pizza.id} className="cartItem">
+            <p>{pizza.name} </p>
+            {pizza.additionalIngredients.length > 0 ? (
+              <p>Additional ingredients:</p>
+            ) : (
+              false
+            )}
+            <ul>
+              {getAdditionalIngredients(pizza.additionalIngredients).map(
+                (ingredient) => (
+                  <li key={ingredient}>{ingredient}</li>
+                )
+              )}
+            </ul>
+            <button
+              onClick={() => editPizza(pizza.id, pizza.additionalIngredients)}
+            >
+              Edit
+            </button>
+          </div>
+        ))}
+        {sauces.map((sauce) => (
+          <div key={sauce.id} className="cartItem">
+            <p>{sauce.name}</p>
+            <button
+              className="addition"
+              onClick={() => dispatch(changeSauceQuantity(sauce.id, "+"))}
+            >
+              +
+            </button>
+            <span>{sauce.quantity}</span>
+            <button
+              className="subtraction"
+              onClick={() => dispatch(changeSauceQuantity(sauce.id, "-"))}
+            >
+              -
+            </button>
+          </div>
+        ))}
+      </div>
+      <div className="order">
         <h4>Total</h4>
         <p>{countTotal()} PLN</p>
-      </div>
-      <div className="orderPlacement">
-        <button onClick={placeOrder}>Place an order</button>
+        <button className="orderPlacement" onClick={placeOrder}>
+          Place an order
+        </button>
       </div>
     </div>
   );

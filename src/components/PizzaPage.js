@@ -11,7 +11,7 @@ const PizzaPage = ({ match, location }) => {
 
   const [additionalIngredients, setAdditionalIngredients] = useState(() => {
     if (location.state === undefined) return [];
-    else return location.state.ingredients;
+    else return location.state;
   });
 
   const pizza = useSelector((state) =>
