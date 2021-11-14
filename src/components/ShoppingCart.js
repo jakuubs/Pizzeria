@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSauceQuantity } from "../actions/cart";
+import { getAdditionalIngredients } from "../utils";
 import "../styles/ShoppingCart.css";
 
 const ShoppingCart = ({ hideCart }) => {
@@ -18,26 +19,6 @@ const ShoppingCart = ({ hideCart }) => {
       pathname: `/pizza/${id}`,
       state: additionalIngredients,
     });
-  };
-
-  const getAdditionalIngredients = (addedIngredients) => {
-    const additionalIngredients = addedIngredients.reduce(
-      (ingredientsQuantity, e) => {
-        ingredientsQuantity[e] = (ingredientsQuantity[e] || 0) + 1;
-        return ingredientsQuantity;
-      },
-      {}
-    );
-    let ingredientsList = [];
-    for (const [ingredient, quantity] of Object.entries(
-      additionalIngredients
-    )) {
-      const listedIngredient = `${
-        ingredients.find((i) => ingredient === i.id).name
-      } ${quantity > 1 ? "x" + quantity : ""}`.trim();
-      ingredientsList.push(listedIngredient);
-    }
-    return ingredientsList;
   };
 
   const countTotal = () => {
@@ -86,7 +67,7 @@ const ShoppingCart = ({ hideCart }) => {
               false
             )}
             <ul>
-              {getAdditionalIngredients(pizza.additionalIngredients).map(
+              {getAdditionalIngredients(ingredients, pizza.additionalIngredients).map(
                 (ingredient) => (
                   <li key={ingredient}>{ingredient}</li>
                 )
