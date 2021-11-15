@@ -1,15 +1,19 @@
 const initialState = {
   pizzas: [],
   sauces: [],
+  pizzaCartId: 0,
 };
 
 const cartReducer = (state = initialState, action) => {
   let index = 0;
   switch (action.type) {
     case "ADD_PIZZA_TO_CART":
+      const pizza = action.payload;
+      pizza.cartId = state.pizzaCartId;
       return {
         ...state,
-        pizzas: [...state.pizzas, action.payload],
+        pizzas: [...state.pizzas, pizza],
+        pizzaCartId: state.pizzaCartId + 1,
       };
     case "DELETE_PIZZA_FROM_CART":
       const pizzasInCart = [...state.pizzas];
@@ -69,6 +73,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         pizzas: [],
         sauces: [],
+        pizzaCartId: 0,
       };
     default:
       return state;
