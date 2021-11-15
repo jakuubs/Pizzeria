@@ -33,7 +33,7 @@ const ShoppingCart = ({ hideCart }) => {
       </div>
       <div className="cartContent">
         {pizzas.map((pizza, index) => (
-          <div key={pizza.id} className="cartItem">
+          <div key={pizza.cartId} className="cartItem">
             <p>{pizza.name} </p>
             {pizza.additionalIngredients.length > 0 ? (
               <p>Additional ingredients:</p>

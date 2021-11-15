@@ -82,7 +82,7 @@ const Checkout = () => {
       {pizzas.length > 0 && <p>pizzas:</p>}
       <ul>
         {pizzas.map((pizza) => (
-          <li key={pizza.id}>
+          <li key={pizza.cartId}>
             {pizza.name}
             {pizza.additionalIngredients.length > 0 && (
               <ul>
