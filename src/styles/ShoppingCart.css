@@ -51,8 +51,8 @@
 .order {
   position: absolute;
   bottom: 0;
+  min-width: 275px;
   margin-left: 20px;
-  width: 100%;
 }
 
 .orderPlacement {

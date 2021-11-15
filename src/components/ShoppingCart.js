@@ -18,15 +18,9 @@ const ShoppingCart = ({ hideCart }) => {
     dispatch(deletePizzaFromCart(index));
   };
 
-  const placeOrder = () => {
-    if (pizzas.length > 0 && sauces.length > 0) {
-      hideCart();
-      history.push("/checkout");
-    } else if (pizzas.length <= 0 || sauces.length <= 0) {
-      alert("You have to add at least one pizza and at least one sauce");
-    } else {
-      alert("Your order is empty!");
-    }
+  const checkout = () => {
+    hideCart();
+    history.push("/checkout");
   };
 
   return (
@@ -79,8 +73,11 @@ const ShoppingCart = ({ hideCart }) => {
       <div className="order">
         <h4>Total</h4>
         <p>{countTotal(pizzas, sauces, ingredients)} PLN</p>
-        <button className="orderPlacement" onClick={placeOrder}>
-          Place an order
+        <button
+          className="orderPlacement"
+          onClick={checkout}
+        >
+          Checkout
         </button>
       </div>
     </div>
