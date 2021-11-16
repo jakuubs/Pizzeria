@@ -3,9 +3,11 @@ import Loader from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { deletePizzaFromCart, changeSauceQuantity, clearCart } from "../actions/cart";
+import { clearCart } from "../actions/cart";
 import { orderFailed, orderSuccessful } from "../actions/order";
-import { countTotal, getAdditionalIngredients } from "../utils";
+import { countTotal } from "../utils";
+import PizzaCartInfo from "./PizzaCartInfo";
+import SauceCartInfo from "./SauceCartInfo";
 
 const Checkout = () => {
   const [isSending, setIsSending] = useState(false);
@@ -80,45 +82,17 @@ const Checkout = () => {
         <h3>Your order is empty</h3>
       )}
       {pizzas.length > 0 && <p>pizzas:</p>}
-      <ul>
+      <div>
         {pizzas.map((pizza, index) => (
-          <li key={pizza.cartId}>
-            {pizza.name}
-            {pizza.additionalIngredients.length > 0 && (
-              <ul>
-                {getAdditionalIngredients(
-                  ingredients,
-                  pizza.additionalIngredients
-                ).map((ingredient) => (
-                  <li key={ingredient}>{ingredient}</li>
-                ))}
-              </ul>
-            )}
-            <button onClick={() => dispatch(deletePizzaFromCart(index))}>Delete</button>
-          </li>
+          <PizzaCartInfo pizza={pizza} index={index} />
         ))}
-      </ul>
-      {sauces.length > 0 && <p>sauces:</p>}
-      <ul>
-        {sauces.map((sauce) => (
-          <li key={sauce.id}>
-            {sauce.name}
-            <button
-              className="addition"
-              onClick={() => dispatch(changeSauceQuantity(sauce.id, "+"))}
-            >
-              +
-            </button>
-            <span>{sauce.quantity}</span>
-            <button
-              className="subtraction"
-              onClick={() => dispatch(changeSauceQuantity(sauce.id, "-"))}
-            >
-              -
-            </button>
-          </li>
-        ))}
-      </ul>
+        {sauces.length > 0 && <p>sauces:</p>}
+        <div>
+          {sauces.map((sauce) => (
+            <SauceCartInfo sauce={sauce} />
+          ))}
+        </div>
+      </div>
       {isSending && (
         <Loader
           className="loader"

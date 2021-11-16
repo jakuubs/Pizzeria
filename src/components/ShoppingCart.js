@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { deletePizzaFromCart, changeSauceQuantity } from "../actions/cart";
-import { getAdditionalIngredients, countTotal } from "../utils";
+import { useSelector } from "react-redux";
+import { countTotal } from "../utils";
+import PizzaCartInfo from "./PizzaCartInfo";
+import SauceCartInfo from "./SauceCartInfo";
 import "../styles/ShoppingCart.css";
 
 const ShoppingCart = ({ hideCart }) => {
-  const dispatch = useDispatch();
   const pizzas = useSelector((state) => state.cart.pizzas);
   const sauces = useSelector((state) => state.cart.sauces);
 
@@ -29,50 +29,16 @@ const ShoppingCart = ({ hideCart }) => {
       </div>
       <div className="cartContent">
         {pizzas.map((pizza, index) => (
-          <div key={pizza.cartId} className="cartItem">
-            <p>{pizza.name} </p>
-            {pizza.additionalIngredients.length > 0 ? (
-              <p>Additional ingredients:</p>
-            ) : (
-              false
-            )}
-            <ul>
-              {getAdditionalIngredients(
-                ingredients,
-                pizza.additionalIngredients
-              ).map((ingredient) => (
-                <li key={ingredient}>{ingredient}</li>
-              ))}
-            </ul>
-            <button onClick={() => dispatch(deletePizzaFromCart(index))}>Delete</button>
-          </div>
+          <PizzaCartInfo pizza={pizza} index={index} pizzaClassName="cartItem" />
         ))}
         {sauces.map((sauce) => (
-          <div key={sauce.id} className="cartItem">
-            <p>{sauce.name}</p>
-            <button
-              className="addition"
-              onClick={() => dispatch(changeSauceQuantity(sauce.id, "+"))}
-            >
-              +
-            </button>
-            <span>{sauce.quantity}</span>
-            <button
-              className="subtraction"
-              onClick={() => dispatch(changeSauceQuantity(sauce.id, "-"))}
-            >
-              -
-            </button>
-          </div>
+          <SauceCartInfo sauce={sauce} sauceClassName="cartItem"/>
         ))}
       </div>
       <div className="order">
         <h4>Total</h4>
         <p>{countTotal(pizzas, sauces, ingredients)} PLN</p>
-        <button
-          className="orderPlacement"
-          onClick={checkout}
-        >
+        <button className="orderPlacement" onClick={checkout}>
           Checkout
         </button>
       </div>
