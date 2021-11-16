@@ -14,10 +14,6 @@ const ShoppingCart = ({ hideCart }) => {
 
   let history = useHistory();
 
-  const deletePizza = (index) => {
-    dispatch(deletePizzaFromCart(index));
-  };
-
   const checkout = () => {
     hideCart();
     history.push("/checkout");
@@ -48,7 +44,7 @@ const ShoppingCart = ({ hideCart }) => {
                 <li key={ingredient}>{ingredient}</li>
               ))}
             </ul>
-            <button onClick={() => deletePizza(index)}>Delete</button>
+            <button onClick={() => dispatch(deletePizzaFromCart(index))}>Delete</button>
           </div>
         ))}
         {sauces.map((sauce) => (

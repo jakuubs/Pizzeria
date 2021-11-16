@@ -3,7 +3,7 @@ import Loader from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { clearCart } from "../actions/cart";
+import { deletePizzaFromCart, changeSauceQuantity, clearCart } from "../actions/cart";
 import { orderFailed, orderSuccessful } from "../actions/order";
 import { countTotal, getAdditionalIngredients } from "../utils";
 
@@ -81,7 +81,7 @@ const Checkout = () => {
       )}
       {pizzas.length > 0 && <p>pizzas:</p>}
       <ul>
-        {pizzas.map((pizza) => (
+        {pizzas.map((pizza, index) => (
           <li key={pizza.cartId}>
             {pizza.name}
             {pizza.additionalIngredients.length > 0 && (
@@ -94,6 +94,7 @@ const Checkout = () => {
                 ))}
               </ul>
             )}
+            <button onClick={() => dispatch(deletePizzaFromCart(index))}>Delete</button>
           </li>
         ))}
       </ul>
@@ -101,7 +102,20 @@ const Checkout = () => {
       <ul>
         {sauces.map((sauce) => (
           <li key={sauce.id}>
-            {sauce.name} {sauce.quantity > 1 && "x" + sauce.quantity}
+            {sauce.name}
+            <button
+              className="addition"
+              onClick={() => dispatch(changeSauceQuantity(sauce.id, "+"))}
+            >
+              +
+            </button>
+            <span>{sauce.quantity}</span>
+            <button
+              className="subtraction"
+              onClick={() => dispatch(changeSauceQuantity(sauce.id, "-"))}
+            >
+              -
+            </button>
           </li>
         ))}
       </ul>
