@@ -7,7 +7,7 @@ const PizzaCartInfo = ({ pizza, index, pizzaClassName }) => {
   const dispatch = useDispatch();
   const ingredients = useSelector((state) => state.ingredients.products);
   return (
-    <div key={pizza.cartId} className={pizzaClassName}>
+    <div className={pizzaClassName}>
       <p>{pizza.name} </p>
       {pizza.additionalIngredients.length > 0 && <p>Additional ingredients:</p>}
       <ul>

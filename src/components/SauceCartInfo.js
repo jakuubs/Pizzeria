@@ -5,7 +5,7 @@ import { changeSauceQuantity } from "../actions/cart";
 const SauceCartInfo = ({ sauce, sauceClassName }) => {
   const dispatch = useDispatch();
   return (
-    <div key={sauce.id} className={sauceClassName}>
+    <div className={sauceClassName}>
       <p>{sauce.name}</p>
       <button
         className="addition"

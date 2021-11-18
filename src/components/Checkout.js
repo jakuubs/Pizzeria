@@ -6,6 +6,7 @@ import { useHistory } from "react-router";
 import { clearCart } from "../actions/cart";
 import { orderFailed, orderSuccessful } from "../actions/order";
 import { countTotal } from "../utils";
+import Sauce from "./Sauce";
 import PizzaCartInfo from "./PizzaCartInfo";
 import SauceCartInfo from "./SauceCartInfo";
 
@@ -17,6 +18,12 @@ const Checkout = () => {
   const pizzas = useSelector((state) => state.cart.pizzas);
   const sauces = useSelector((state) => state.cart.sauces);
   const ingredients = useSelector((state) => state.ingredients.products);
+
+  const menuSauces = useSelector((state) => state.sauces.products);
+  const isLoading = useSelector((state) => {
+    if (!state.sauces.loading) return false;
+    else return true;
+  });
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -63,7 +70,7 @@ const Checkout = () => {
       );
     }
     order.total = countTotal(pizzas, sauces, ingredients);
-    if (useRef) sendOrder(order);
+    if (mountedRef) sendOrder(order);
   };
 
   useEffect(() => {
@@ -87,12 +94,12 @@ const Checkout = () => {
       {pizzas.length > 0 && <p>pizzas:</p>}
       <div>
         {pizzas.map((pizza, index) => (
-          <PizzaCartInfo pizza={pizza} index={index} />
+          <PizzaCartInfo key={pizza.cartId} pizza={pizza} index={index} />
         ))}
         {sauces.length > 0 && <p>sauces:</p>}
         <div>
           {sauces.map((sauce) => (
-            <SauceCartInfo sauce={sauce} />
+            <SauceCartInfo key={sauce.id} sauce={sauce} />
           ))}
         </div>
       </div>
@@ -108,6 +115,24 @@ const Checkout = () => {
       <button onClick={submitOrder} disabled={isSending || pizzas.length <= 0}>
         Submit order
       </button>
+      {isLoading ? (
+        <Loader
+          className="loader"
+          type="Circles"
+          color="#ec1f26"
+          height={100}
+          width={100}
+        />
+      ) : (
+        menuSauces.map((sauce) => (
+          <Sauce
+            key={sauce.id}
+            id={sauce.id}
+            name={sauce.name}
+            price={sauce.price}
+          />
+        ))
+      )}
     </div>
   );
 };

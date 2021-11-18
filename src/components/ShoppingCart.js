@@ -29,10 +29,10 @@ const ShoppingCart = ({ hideCart }) => {
       </div>
       <div className="cartContent">
         {pizzas.map((pizza, index) => (
-          <PizzaCartInfo pizza={pizza} index={index} pizzaClassName="cartItem" />
+          <PizzaCartInfo key={pizza.cartId} pizza={pizza} index={index} pizzaClassName="cartItem" />
         ))}
         {sauces.map((sauce) => (
-          <SauceCartInfo sauce={sauce} sauceClassName="cartItem"/>
+          <SauceCartInfo key={sauce.id} sauce={sauce} sauceClassName="cartItem"/>
         ))}
       </div>
       <div className="order">
