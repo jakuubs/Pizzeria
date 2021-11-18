@@ -49,16 +49,19 @@ const Checkout = () => {
   };
 
   const submitOrder = () => {
-    let order = { pizza: [], sauce: [], total: 0 };
+    let order = { pizza: [], total: 0 };
     pizzas.forEach((pizza) =>
       order.pizza.push({
         id: pizza.id,
         ingredients: pizza.additionalIngredients,
       })
     );
-    sauces.forEach((sauce) =>
-      order.sauce.push({ id: sauce.id, count: sauce.quantity })
-    );
+    if (sauces.length > 0) {
+      order.sauce = [];
+      sauces.forEach((sauce) =>
+        order.sauce.push({ id: sauce.id, count: sauce.quantity })
+      );
+    }
     order.total = countTotal(pizzas, sauces, ingredients);
     if (useRef) sendOrder(order);
   };
@@ -102,10 +105,7 @@ const Checkout = () => {
           width={100}
         />
       )}
-      <button
-        onClick={submitOrder}
-        disabled={isSending || pizzas.length <= 0 || sauces.length <= 0}
-      >
+      <button onClick={submitOrder} disabled={isSending || pizzas.length <= 0}>
         Submit order
       </button>
     </div>
