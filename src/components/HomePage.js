@@ -1,8 +1,9 @@
 import React from "react";
+import "../styles/Menu.css";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="menu">
       <p>HomePage</p>
     </div>
   );

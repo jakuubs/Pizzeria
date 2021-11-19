@@ -1,35 +1,35 @@
 .pizzaList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    list-style: none;
-    padding: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
+  padding: 0px;
 }
 
 .loader {
-    grid-column: span 2;
-    align-self: center;
-    justify-self: center;
-    margin-top: 30px;
+  grid-column: span 2;
+  align-self: center;
+  justify-self: center;
+  margin-top: 30px;
 }
 
 .sauceList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    list-style: none;
-    padding: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
+  padding: 0px;
 }
 
 .menu h3 {
-    margin-top: 35px;
-    font-size: 35px;
-    font-style: italic;
-    text-decoration: underline;
+  margin-top: 35px;
+  font-size: 35px;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 .menu img {
-    float: right;
+  float: right;
 }
 
 .menu button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

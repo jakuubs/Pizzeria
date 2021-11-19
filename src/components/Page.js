@@ -1,5 +1,4 @@
 import React from "react";
-// import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import Menu from "./Menu";
