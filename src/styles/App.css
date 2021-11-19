@@ -10,6 +10,7 @@
   min-height: 100vh;
   text-align: center;
   font-family: "Montserrat Alternates", sans-serif;
+  background-color: #f4f4f4;
 }
 
 header {
@@ -18,13 +19,14 @@ header {
   z-index: 1;
   width: 100%;
   height: 140px;
-  background-color: #e3dede;
+  background-color: #f4f4f4;
 }
 
 main {
   margin-top: 140px;
   grid-area: main;
-  background-color: #e3dede;
+  background-color: #dedede;
+  max-width: 100vw;
 }
 
 footer {

@@ -10,7 +10,7 @@ import "../styles/Page.css";
 
 const Page = () => {
   return (
-    <div>
+    <>
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/menu" component={Menu} />
@@ -19,7 +19,7 @@ const Page = () => {
         <Route path="/checkout" component={Checkout} />
         <Route component={ErrorPage} />
       </Switch>
-    </div>
+    </>
   );
 };
 

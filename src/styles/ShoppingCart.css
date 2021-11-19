@@ -1,6 +1,7 @@
 .shoppingCart {
   position: fixed;
   display: flex;
+  z-index: 10;
   flex-direction: column;
   justify-content: left;
   text-align: left;
