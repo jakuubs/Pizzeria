@@ -1,12 +1,12 @@
 .pizzaList {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   list-style: none;
   padding: 0px;
 }
 
 .loader {
-  grid-column: span 2;
+  grid-column: span 3;
   align-self: center;
   justify-self: center;
   margin-top: 30px;
@@ -14,7 +14,7 @@
 
 .sauceList {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   list-style: none;
   padding: 0px;
 }
@@ -28,8 +28,4 @@
 
 .menu img {
   float: right;
-}
-
-.menu button:hover {
-  cursor: pointer;
 }

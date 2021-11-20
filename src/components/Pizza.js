@@ -8,6 +8,11 @@ const Pizza = ({ id, name, price, ingredients }) => {
 
   return (
     <div className="pizza">
+      <img
+        className="pizzaImage"
+        alt="pizza"
+        src={images[name.toLowerCase()]}
+      />
       <div className="pizzaInfo">
         <p>
           <b>{name}</b> - <i>{price} PLN</i>
@@ -17,26 +22,16 @@ const Pizza = ({ id, name, price, ingredients }) => {
             <li key={ingredient.id}>{ingredient.name}</li>
           ))}
         </ul>
-        <button
+      </div>
+      <button className="order-button"
           onClick={() => {
             history.push({
               pathname: `/pizza/${id}`,
             });
           }}
         >
-          <b>Add to cart</b>
-          <img
-            alt="cart"
-            src={images.cart}
-            style={{ height: "15px", width: "15px", marginLeft: "7px" }}
-          />
+          <b>Add to order</b>
         </button>
-      </div>
-      <img
-        className="pizzaImage"
-        alt="pizza"
-        src={images[name.toLowerCase()]}
-      />
     </div>
   );
 };

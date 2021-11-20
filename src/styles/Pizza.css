@@ -1,58 +1,66 @@
 .pizza {
     align-self: center;
+    justify-self: center;
     display: flex;
-    flex-direction: row;
-    background-color: beige;
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 50px;
-    margin: 40px;
+    flex-direction: column;
+    background-color: #f4f4f4;
     text-align: left;
-    min-width: 500px;
-    max-height: 420px;
+    margin-top: 50px;
+    max-width: 300px;
+    min-height: 500px;
+    box-shadow: 5px 5px 45px 10px #777776;
 }
 
-.pizza button {
+.pizza:nth-child(3n - 2) {
+    justify-self: end;
+}
+
+.pizza:nth-child(3n + 3) {
+    justify-self: start;
+}
+
+.pizza:nth-child(n + 4) {
+    margin-top: 100px;
+}
+
+.pizzaInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.pizzaInfo ul {
+    display: inline;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    color: #585858
+}
+
+.order-button {
     margin: 0 auto;
-    margin-top: 20px;
+    margin-bottom: 20px !important;
     padding: 10px;
     display: block;
-    border: 2px solid #262625;
+    border: 1px solid #777777;
+    background-color: #dedede;
     border-radius: 5px;
     font-family: 'Montserrat Alternates', sans-serif;
     transition: background-color .5s;
 }
 
-.pizza button:hover {
+.order-button:hover {
     background-color:#78d14e;
     background-image:linear-gradient(to right, #ffffff00 0%, #ffffff00 40%, #ffffffb3 100%);
     background-repeat:no-repeat;
     background-size: 200% 100%; 
     transition:background-size 1s, background-color 1s;
-}
-
-.pizza:nth-child(-n + 2) {
-    margin-top: 10px;
-}
-
-.pizza:nth-child(even) {
-    justify-self: start;
-}
-
-.pizza:nth-child(odd) {
-    justify-self: end;
-}
-
-.pizzaInfo {
-    min-width: 200px;
-    margin-right: 50px;
+    cursor: pointer;
 }
 
 .pizzaImage {
-    flex-grow: 1;
-    max-height: 200px;
-    max-width: 200px;
-    margin-left: 50px;
-    border: 2px solid #1d0855;
-    border-radius: 10px;
+    margin-top: -50px;
+    width: 100%;
 }
