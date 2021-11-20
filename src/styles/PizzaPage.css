@@ -1,0 +1,115 @@
+.pizza-page-info {
+    display: grid;
+    max-height: 850px;
+    grid-template-rows: auto 1fr 1fr 1fr;
+    grid-template-columns: max-content 1fr;
+}
+
+.pizza-page-info img {
+    grid-column: 1 / 2;
+    grid-row: 1 / 5;
+    height: auto;
+    width: 100%;
+}
+
+.pizza-page-info h3 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    align-self: start;
+    justify-self: center;
+    margin-bottom: 0;
+}
+
+.pizza-ingredients {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    align-self: end;
+    padding: 0;
+    list-style: none;
+    margin-top: 50px;
+}
+
+.pizza-customization {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.pizza-customization h4 {
+    font-size: 15px;
+}
+
+.pizza-customization ul {
+    padding: 0;
+    list-style: none;
+}
+
+.pizza-customization ul li {
+    width: 500px;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.pizza-customization-ingredient {
+    display: flex;
+    align-items: center;
+}
+
+.pizza-customization-ingredient span {
+    padding-left: 10px;
+}
+
+.pizza-customization-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    height: 35px;
+    width: 120px;
+}
+
+.pizza-customization-buttons button {
+    height: 100%;
+    width: 30px;
+    color: #585858;
+    border: 1px solid #585858;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.pizza-customization-buttons button:hover {
+    cursor: pointer;
+    background-color: #78d14e;
+}
+
+.pizza-customization-buttons button:disabled {
+    color: #585858;
+    border: 1px solid #585858;
+    opacity: 1;
+}
+
+.pizza-customization-buttons button:disabled:hover {
+    background-color: #f38c90;
+}
+
+.pizza-customization-buttons span {
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 15px;
+    color: #585858;
+    background-color: #f4f4f4;
+}
+
+.total {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+.add-order {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}

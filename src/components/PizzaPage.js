@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { addPizzaToCart } from "../actions/cart";
 import images from "../images";
+import "../styles/PizzaPage.css";
 
 const PizzaPage = ({ match }) => {
   const dispatch = useDispatch();
@@ -94,49 +95,53 @@ const PizzaPage = ({ match }) => {
           width={100}
         />
       ) : (
-        <div>
-          <h3>{pizza.name}</h3>
+        <div className="pizza-page-info">
           <img
             alt={`Pizza ${pizza.name}`}
             src={images[pizza.name.toLowerCase()]}
           />
-          <ul>
+          <h3>{pizza.name}</h3>
+          <ul className="pizza-ingredients">
             {pizzaIngredients.map((ingredient) => (
               <li key={ingredient.id}>{ingredient.name}</li>
             ))}
           </ul>
-          <div>
+          <div className="pizza-customization">
             <h4>Customize your pizza</h4>
             <ul>
               {ingredients.map((ingredient) => (
                 <li key={ingredient.id}>
-                  {ingredient.name} {ingredient.price} PLN
-                  <button
-                    onClick={() => removeIngredient(ingredient.id)}
-                    disabled={
-                      countIngredients(ingredient.id) <=
-                      checkIfIngredientInPizza(ingredient.id)
-                        ? true
-                        : false
-                    }
-                  >
-                    -
-                  </button>
-                  <span>{countIngredients(ingredient.id)}</span>
-                  <button
-                    onClick={() => addIngredient(ingredient.id)}
-                    disabled={
-                      countIngredients(ingredient.id) >= 2 ? true : false
-                    }
-                  >
-                    +
-                  </button>
+                  <div className="pizza-customization-ingredient">{ingredient.name} <span><i>{ingredient.price} PLN</i></span></div>
+                  <div className="pizza-customization-buttons">
+                    <button
+                      onClick={() => removeIngredient(ingredient.id)}
+                      disabled={
+                        countIngredients(ingredient.id) <=
+                        checkIfIngredientInPizza(ingredient.id)
+                          ? true
+                          : false
+                      }
+                    >
+                      -
+                    </button>
+                    <span>{countIngredients(ingredient.id)}</span>
+                    <button
+                      onClick={() => addIngredient(ingredient.id)}
+                      disabled={
+                        countIngredients(ingredient.id) >= 2 ? true : false
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
-          <p>Total: {countTotal()}</p>
-          <button onClick={() => addPizzaToOrder()}>Add to order</button>
+          <p className="total"><b>Total:</b> <i>{countTotal()} PLN</i></p>
+          <button className="add-order" onClick={() => addPizzaToOrder()}>
+            Add to order
+          </button>
         </div>
       )}
     </div>
