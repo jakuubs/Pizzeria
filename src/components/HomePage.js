@@ -11,10 +11,14 @@ const HomePage = () => {
         <img alt="Pizza Planet" src={pizza} />
       </div>
       <div className="menu-item">
-        <NavLink to="/menu">Menu</NavLink>
+        <NavLink to="/menu">
+          <div className="blur">Menu</div>
+        </NavLink>
       </div>
       <div className="about-item">
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="/about">
+          <div className="blur">About</div>
+        </NavLink>
       </div>
     </div>
   );
