@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import pizza from "../images/pizza_planet.png";
-
 import "../styles/Home.css";
 
 const HomePage = () => {
