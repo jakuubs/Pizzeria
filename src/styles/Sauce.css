@@ -1,56 +1,33 @@
 .sauce {
     align-self: center;
+    justify-self: center;
     display: flex;
-    flex-direction: row;
-    background-color: beige;
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 50px;
-    margin: 40px;
+    flex-direction: column;
+    background-color: #f4f4f4;
     text-align: left;
-    min-width: 500px;
-    max-height: 420px;
+    margin-bottom: 100px;
+    max-width: 250px;
+    min-height: 400px;
+    box-shadow: 5px 5px 45px 10px #777776;
 }
 
-.sauce button {
-    margin: 0 auto;
-    margin-top: 70px;
-    padding: 10px;
-    display: block;
-    border: 2px solid #262625;
-    border-radius: 5px;
-    font-family: 'Montserrat Alternates', sans-serif;
-    transition: background-color .5s;
-}
-
-.sauce button:hover {
-    background-color:#78d14e;
-    background-image:linear-gradient(to right, #ffffff00 0%, #ffffff00 40%, #ffffffb3 100%);
-    background-repeat:no-repeat;
-    background-size: 200% 100%; 
-    transition:background-size 1s, background-color 1s;
-}
-
-.sauce:nth-child(-n + 2) {
-    margin-top: 10px;
-}
-
-.sauce:nth-child(even) {
-    justify-self: start;
-}
-
-.sauce:nth-child(odd) {
+.sauce:nth-child(3n - 2) {
     justify-self: end;
 }
 
+.sauce:nth-child(3n + 3) {
+    justify-self: start;
+}
+
 .sauceInfo {
-    min-width: 200px;
-    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .sauceImage {
-    flex-grow: 1;
-    max-height: 150px;
-    max-width: 150px;
-    margin-left: 50px;
+    width: 100%;
+    transform: scale(0.75);
 }

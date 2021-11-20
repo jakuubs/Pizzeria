@@ -19,11 +19,17 @@ const Sauce = ({ id, name, price }) => {
 
   return (
     <div className="sauce">
+      <img
+        className="sauceImage"
+        alt="sauce"
+        src={images[name.toLowerCase()]}
+      />
       <div className="sauceInfo">
         <p>
           <b>{name}</b> - <i>{price} PLN</i>
         </p>
-        <button onClick={() => dispatch(addSauceToCart(id, name, 1, price))}>
+      </div>
+      <button className="order-button" onClick={() => dispatch(addSauceToCart(id, name, 1, price))}>
           <b>Add to cart</b>
           <img
             alt="cart"
@@ -31,12 +37,6 @@ const Sauce = ({ id, name, price }) => {
             style={{ height: "15px", width: "15px", marginLeft: "7px" }}
           />
         </button>
-      </div>
-      <img
-        className="sauceImage"
-        alt="sauce"
-        src={images[name.toLowerCase()]}
-      />
     </div>
   );
 };

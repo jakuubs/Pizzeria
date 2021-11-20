@@ -26,6 +26,23 @@
   text-decoration: underline;
 }
 
-.menu img {
-  float: right;
+.order-button {
+  margin: 0 auto;
+  margin-bottom: 30px !important;
+  padding: 10px;
+  display: block;
+  border: 1px solid #777777;
+  background-color: #dedede;
+  border-radius: 5px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  transition: background-color .5s;
+}
+
+.order-button:hover {
+  background-color:#78d14e;
+  background-image:linear-gradient(to right, #ffffff00 0%, #ffffff00 40%, #ffffffb3 100%);
+  background-repeat:no-repeat;
+  background-size: 200% 100%; 
+  transition:background-size 1s, background-color 1s;
+  cursor: pointer;
 }
