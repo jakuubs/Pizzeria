@@ -1,33 +1,40 @@
 .sauce {
-    align-self: center;
-    justify-self: center;
-    display: flex;
-    flex-direction: column;
-    background-color: #f4f4f4;
-    text-align: left;
-    margin-bottom: 100px;
-    max-width: 250px;
-    min-height: 400px;
-    box-shadow: 5px 5px 45px 10px #777776;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  max-width: 250px;
+  min-height: 400px;
+  box-shadow: 5px 5px 45px 10px #777776;
+  transition: 0.5s;
+}
+
+.sauce:hover {
+  box-shadow: 10px 10px 60px 20px #777776;
+  transform: scale(1.05);
 }
 
 .sauce:nth-child(3n - 2) {
-    justify-self: end;
+  justify-self: end;
 }
 
 .sauce:nth-child(3n + 3) {
-    justify-self: start;
+  justify-self: start;
 }
 
 .sauceInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .sauceImage {
-    width: 100%;
-    transform: scale(0.75);
+  width: 100%;
+  transform: scale(0.75);
 }

@@ -1,47 +1,57 @@
 .pizza {
-    align-self: center;
-    justify-self: center;
-    display: flex;
-    flex-direction: column;
-    background-color: #f4f4f4;
-    text-align: left;
-    max-width: 300px;
-    min-height: 520px;
-    box-shadow: 5px 5px 45px 10px #777776;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  text-align: left;
+  max-width: 300px;
+  min-height: 520px;
+  box-shadow: 5px 5px 45px 10px #777776;
+  transition: 0.5s;
+}
+
+.pizza:hover {
+  box-shadow: 10px 10px 60px 20px #777776;
+  transform: scale(1.05);
 }
 
 .pizza:nth-child(3n - 2) {
-    justify-self: end;
+  justify-self: end;
 }
 
 .pizza:nth-child(3n + 3) {
-    justify-self: start;
+  justify-self: start;
 }
 
 .pizza:nth-child(n + 4) {
-    margin-top: 100px;
+  margin-top: 100px;
+}
+
+.pizza:nth-child(-n + 3) {
+  margin-top: 30px;
 }
 
 .pizza:nth-last-child(-n + 3) {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .pizzaInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .pizzaInfo ul {
-    display: inline;
-    list-style: none;
-    padding: 0;
-    text-align: center;
-    color: #585858
+  display: inline;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  color: #585858;
 }
 
 .pizzaImage {
-    width: 100%;
+  width: 100%;
 }
