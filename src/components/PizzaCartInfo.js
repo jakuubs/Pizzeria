@@ -9,17 +9,24 @@ const PizzaCartInfo = ({ pizza, index, pizzaClassName }) => {
   return (
     <div className={pizzaClassName}>
       <p>{pizza.name} </p>
-      {pizza.additionalIngredients.length > 0 && <p>Additional ingredients:</p>}
-      <ul>
-        {getAdditionalIngredients(ingredients, pizza.additionalIngredients).map(
-          (ingredient) => (
-            <li key={ingredient}>{ingredient}</li>
-          )
+      <div>
+        {pizza.additionalIngredients.length > 0 && (
+          <p>Additional ingredients:</p>
         )}
-      </ul>
-      <button onClick={() => dispatch(deletePizzaFromCart(index))}>
-        Delete
-      </button>
+        <ul>
+          {getAdditionalIngredients(
+            ingredients,
+            pizza.additionalIngredients
+          ).map((ingredient) => (
+            <li key={ingredient}>{ingredient}</li>
+          ))}
+        </ul>
+      </div>
+      <span>
+        <button onClick={() => dispatch(deletePizzaFromCart(index))}>
+          Delete
+        </button>
+      </span>
     </div>
   );
 };

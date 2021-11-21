@@ -21,26 +21,35 @@ const ShoppingCart = ({ hideCart }) => {
 
   return (
     <div className="shoppingCart">
-      <div>
-        <button className="closeButton" onClick={hideCart}>
-          XXXXX
-        </button>
+      <div className="cart-header">
+        <button onClick={hideCart}>&#10006;</button>
         <h3>Cart items</h3>
       </div>
-      <div className="cartContent">
+      <div className="cart-content">
         {pizzas.map((pizza, index) => (
-          <PizzaCartInfo key={pizza.cartId} pizza={pizza} index={index} pizzaClassName="cartItem" />
+          <PizzaCartInfo
+            key={pizza.cartId}
+            pizza={pizza}
+            index={index}
+            pizzaClassName="cart-pizza-item"
+          />
         ))}
         {sauces.map((sauce) => (
-          <SauceCartInfo key={sauce.id} sauce={sauce} sauceClassName="cartItem"/>
+          <SauceCartInfo
+            key={sauce.id}
+            sauce={sauce}
+            sauceClassName="cart-sauce-item"
+          />
         ))}
       </div>
       <div className="order">
         <h4>Total</h4>
         <p>{countTotal(pizzas, sauces, ingredients)} PLN</p>
-        <button className="orderPlacement" onClick={checkout}>
-          Checkout
-        </button>
+        <div>
+          <button className="orderPlacement" onClick={checkout}>
+            Checkout
+          </button>
+        </div>
       </div>
     </div>
   );

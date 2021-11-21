@@ -7,19 +7,21 @@ const SauceCartInfo = ({ sauce, sauceClassName }) => {
   return (
     <div className={sauceClassName}>
       <p>{sauce.name}</p>
-      <button
-        className="addition"
-        onClick={() => dispatch(changeSauceQuantity(sauce.id, "+"))}
-      >
-        +
-      </button>
-      <span>{sauce.quantity}</span>
-      <button
-        className="subtraction"
-        onClick={() => dispatch(changeSauceQuantity(sauce.id, "-"))}
-      >
-        -
-      </button>
+      <div>
+        <button
+          className="addition"
+          onClick={() => dispatch(changeSauceQuantity(sauce.id, "+"))}
+        >
+          +
+        </button>
+        <span>{sauce.quantity}</span>
+        <button
+          className="subtraction"
+          onClick={() => dispatch(changeSauceQuantity(sauce.id, "-"))}
+        >
+          -
+        </button>
+      </div>
     </div>
   );
 };
