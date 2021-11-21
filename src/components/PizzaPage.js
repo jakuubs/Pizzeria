@@ -111,7 +111,12 @@ const PizzaPage = ({ match }) => {
             <ul>
               {ingredients.map((ingredient) => (
                 <li key={ingredient.id}>
-                  <div className="pizza-customization-ingredient">{ingredient.name} <span><i>{ingredient.price} PLN</i></span></div>
+                  <div className="pizza-customization-ingredient">
+                    <span>{ingredient.name}</span>
+                    <span>
+                      <i>{ingredient.price} PLN</i>
+                    </span>
+                  </div>
                   <div className="pizza-customization-buttons">
                     <button
                       onClick={() => removeIngredient(ingredient.id)}
@@ -138,10 +143,12 @@ const PizzaPage = ({ match }) => {
               ))}
             </ul>
           </div>
-          <p className="total"><b>Total:</b> <i>{countTotal()} PLN</i></p>
-          <button className="add-order" onClick={() => addPizzaToOrder()}>
-            Add to order
-          </button>
+          <p className="total">
+            <b>Total:</b> <i>{countTotal()} PLN</i>
+          </p>
+          <div className="add-order">
+            <button onClick={() => addPizzaToOrder()}><b>Add to order</b></button>
+          </div>
         </div>
       )}
     </div>
