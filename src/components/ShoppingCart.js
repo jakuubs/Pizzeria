@@ -23,7 +23,7 @@ const ShoppingCart = ({ hideCart }) => {
     <div className="shoppingCart">
       <div className="cart-header">
         <button onClick={hideCart}>&#10006;</button>
-        <h3>Cart items</h3>
+        <h3>Your order:</h3>
       </div>
       <div className="cart-content">
         {pizzas.map((pizza, index) => (
@@ -46,7 +46,7 @@ const ShoppingCart = ({ hideCart }) => {
         <h4>Total</h4>
         <p>{countTotal(pizzas, sauces, ingredients)} PLN</p>
         <div>
-          <button className="orderPlacement" onClick={checkout}>
+          <button onClick={checkout}>
             Checkout
           </button>
         </div>
