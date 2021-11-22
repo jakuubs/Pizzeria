@@ -44,7 +44,7 @@ const ShoppingCart = ({ hideCart }) => {
       </div>
       <div className="order">
         <h4>Total</h4>
-        <p>{countTotal(pizzas, sauces, ingredients)} PLN</p>
+        <p><i>{countTotal(pizzas, sauces, ingredients)} PLN</i></p>
         <div>
           <button onClick={checkout}>
             Checkout

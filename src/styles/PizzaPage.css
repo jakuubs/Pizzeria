@@ -3,6 +3,7 @@
   max-height: 850px;
   grid-template-rows: auto 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr;
+  margin-right: 200px;
 }
 
 .pizza-page-info img {

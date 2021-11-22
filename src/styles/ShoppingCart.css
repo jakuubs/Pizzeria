@@ -6,7 +6,7 @@
   justify-content: left;
   text-align: left;
   min-width: 300px;
-  height: 400px;
+  height: 450px;
   right: 0;
   font-family: "Montserrat Alternates", Courier, monospace;
   font-size: 15px;
@@ -37,7 +37,7 @@
 .cart-content {
   display: flex;
   flex-direction: column;
-  height: 250px;
+  flex-grow: 4;
   overflow: auto;
   margin-left: 10px;
 }
@@ -144,6 +144,8 @@
 .order p {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
+  display: block;
+  align-self: flex-start;
 }
 
 .order div {
