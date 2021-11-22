@@ -12,7 +12,7 @@
 .checkout-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   background-color: #f4f4f4;
   height: 500px;
   width: 500px;
@@ -26,6 +26,7 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr;
+  width: 250px;
   margin-left: 5px;
   margin-right: 10px;
 }
@@ -75,6 +76,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 250px;
   margin-left: 5px;
   margin-right: 10px;
 }
@@ -140,7 +142,7 @@
   padding: 10px;
   display: block;
   border: 1px solid #777777;
-  background-color: #dedede;
+  background-color: #f4f4f4;
   border-radius: 5px;
   font-family: "Montserrat Alternates", sans-serif;
   transition: background-color 0.5s;
