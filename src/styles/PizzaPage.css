@@ -128,10 +128,15 @@
 }
 
 .add-order button:hover {
-  background-color:#78d14e;
-  background-image:linear-gradient(to right, #ffffff00 0%, #ffffff00 40%, #ffffffb3 100%);
-  background-repeat:no-repeat;
-  background-size: 200% 100%; 
-  transition:background-size 1s, background-color 1s;
+  background-color: #78d14e;
+  background-image: linear-gradient(
+    to right,
+    #ffffff00 0%,
+    #ffffff00 40%,
+    #ffffffb3 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  transition: background-size 1s, background-color 1s;
   cursor: pointer;
 }

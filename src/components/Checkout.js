@@ -9,6 +9,7 @@ import { countTotal } from "../utils";
 import Sauce from "./Sauce";
 import PizzaCartInfo from "./PizzaCartInfo";
 import SauceCartInfo from "./SauceCartInfo";
+import "../styles/Checkout.css";
 
 const Checkout = () => {
   const [isSending, setIsSending] = useState(false);
@@ -85,36 +86,37 @@ const Checkout = () => {
   }, []);
 
   return (
-    <div>
-      {pizzas.length + sauces.length > 0 ? (
-        <h3>Order summary:</h3>
-      ) : (
-        <h3>Your order is empty</h3>
-      )}
-      {pizzas.length > 0 && <p>pizzas:</p>}
-      <div>
-        {pizzas.map((pizza, index) => (
-          <PizzaCartInfo key={pizza.cartId} pizza={pizza} index={index} />
-        ))}
-        {sauces.length > 0 && <p>sauces:</p>}
-        <div>
-          {sauces.map((sauce) => (
-            <SauceCartInfo key={sauce.id} sauce={sauce} />
-          ))}
-        </div>
+    <div className="checkout-page">
+      <h3 className="summary">Order summary:</h3>
+      <div className="checkout-content">
+        {pizzas.length + sauces.length > 0 ? (
+          <>
+            <div className="checkout-content-pizzas">
+              {pizzas.length > 0 && <h4>PIZZAS</h4>}
+              {pizzas.map((pizza, index) => (
+                <PizzaCartInfo
+                  key={pizza.cartId}
+                  pizza={pizza}
+                  index={index}
+                  pizzaClassName="pizza-order-item"
+                />
+              ))}
+            </div>
+            <div className="checkout-content-sauces">
+              {sauces.length > 0 && <h4>SAUCES</h4>}
+              {sauces.map((sauce) => (
+                <SauceCartInfo
+                  key={sauce.id}
+                  sauce={sauce}
+                  sauceClassName="sauce-order-item"
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <h3 className="summary-empty">Your order is empty ;(</h3>
+        )}
       </div>
-      {isSending && (
-        <Loader
-          className="loader"
-          type="Circles"
-          color="#ec1f26"
-          height={100}
-          width={100}
-        />
-      )}
-      <button onClick={submitOrder} disabled={isSending || pizzas.length <= 0}>
-        Submit order
-      </button>
       {isLoading ? (
         <Loader
           className="loader"
@@ -124,15 +126,36 @@ const Checkout = () => {
           width={100}
         />
       ) : (
-        menuSauces.map((sauce) => (
-          <Sauce
-            key={sauce.id}
-            id={sauce.id}
-            name={sauce.name}
-            price={sauce.price}
-          />
-        ))
+        <div className="checkout-sauces">
+          <p>Last chance to add sauces to your order ;)</p>
+          <div className="sauces-list">
+            {menuSauces.map((sauce) => (
+              <Sauce
+                key={sauce.id}
+                id={sauce.id}
+                name={sauce.name}
+                price={sauce.price}
+              />
+            ))}
+          </div>
+        </div>
       )}
+      <div className="submit-order">
+      <button
+        onClick={submitOrder}
+        disabled={isSending || pizzas.length <= 0}
+      >
+        Submit order
+      </button>
+      {isSending && (
+        <Loader
+          type="Circles"
+          color="#ec1f26"
+          height={100}
+          width={100}
+        />
+      )}
+      </div>
     </div>
   );
 };

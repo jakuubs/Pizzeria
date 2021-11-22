@@ -1,48 +1,28 @@
-.shoppingCart {
-  position: fixed;
+.summary {
+  font-size: 32px;
+  text-decoration: underline;
+  margin-bottom: 50px;
+}
+
+.summary-empty {
+  font-size: 24px;
+  color: #585858;
+}
+
+.checkout-content {
   display: flex;
-  z-index: 10;
   flex-direction: column;
-  justify-content: left;
-  text-align: left;
-  min-width: 300px;
-  height: 450px;
-  right: 0;
-  font-family: "Montserrat Alternates", Courier, monospace;
-  font-size: 15px;
+  justify-content: center;
   background-color: #f4f4f4;
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  padding: 15px;
+  overflow: auto;
   box-shadow: 5px 5px 45px 10px #777776;
 }
 
-.cart-header {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  border-bottom: 2px solid #aaadb1;
-}
-
-.cart-header button {
-  all: unset;
-  margin-right: 15px;
-}
-
-.cart-header h3 {
-  margin-left: 15px;
-}
-
-.cart-header button:hover {
-  cursor: pointer;
-}
-
-.cart-content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 4;
-  overflow: auto;
-  margin-left: 10px;
-}
-
-.cart-pizza-item {
+.checkout-content-pizzas > .pizza-order-item {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr;
@@ -50,7 +30,7 @@
   margin-right: 10px;
 }
 
-.cart-pizza-item > p {
+.checkout-content-pizzas > .pizza-order-item > p {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   align-self: center;
@@ -58,23 +38,24 @@
   text-decoration: underline;
 }
 
-.cart-pizza-item div {
+.checkout-content-pizzas > .pizza-order-item div {
   grid-column: 1 / 3;
   grid-row: 2 / 3;
 }
 
-.cart-pizza-item div > ul {
+.checkout-content-pizzas > .pizza-order-item div > ul {
   list-style: none;
+  padding: 0;
 }
 
-.cart-pizza-item span {
+.checkout-content-pizzas > .pizza-order-item span {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   align-self: center;
   justify-self: flex-end;
 }
 
-.cart-pizza-item span > button {
+.checkout-content-pizzas > .pizza-order-item span > button {
   padding: 5px;
   display: block;
   border: 1px solid #777777;
@@ -84,13 +65,13 @@
   transition: color 0.3s, background-color 0.5s;
 }
 
-.cart-pizza-item span > button:hover {
+.checkout-content-pizzas > .pizza-order-item span > button:hover {
   cursor: pointer;
   color: #f4f4f4;
   background-color: #ec1f26;
 }
 
-.cart-sauce-item {
+.checkout-content-sauces > .sauce-order-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -98,11 +79,11 @@
   margin-right: 10px;
 }
 
-.cart-sauce-item > p {
+.checkout-content-sauces > .sauce-order-item > p {
   text-decoration: underline;
 }
 
-.cart-sauce-item div {
+.checkout-content-sauces > .sauce-order-item div {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -110,12 +91,12 @@
   width: 80px;
 }
 
-.cart-sauce-item div > span {
+.checkout-content-sauces > .sauce-order-item div > span {
   display: flex;
   align-items: center;
 }
 
-.cart-sauce-item div > button {
+.checkout-content-sauces > .sauce-order-item div > button {
   height: 20px;
   width: 20px;
   border: none;
@@ -123,38 +104,39 @@
   background-color: #f5ad42;
 }
 
-.cart-sauce-item div > button:hover {
+.checkout-content-sauces > .sauce-order-item div > button:hover {
   cursor: pointer;
 }
 
-.order {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
-  padding-left: 50px;
-  padding-right: 35px;
-  border-top: 2px solid #aaadb1;
+.checkout-sauces > p {
+  font-size: 24px;
+  color: #585858;
+  margin-top: 80px;
+  margin-bottom: 40px;
 }
 
-.order h4 {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+.checkout-sauces > .sauces-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 250px;
+  margin-right: 250px;
 }
 
-.order p {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  display: block;
-  align-self: flex-start;
+.checkout-sauces > .sauces-list .sauce {
+    margin-bottom: 50px;
 }
 
-.order div {
-  grid-column: 2 / 3;
-  grid-row: span 2;
-  align-self: center;
+.checkout-page > .loader {
+  margin: 60px;
 }
 
-.order div > button {
+.submit-order {
+  height: 250px;
+}
+
+.submit-order > button {
+  margin: 25px auto;
   padding: 10px;
   display: block;
   border: 1px solid #777777;
@@ -164,7 +146,7 @@
   transition: background-color 0.5s;
 }
 
-.order div > button:hover {
+.submit-order > button:hover {
   background-color: #78d14e;
   background-image: linear-gradient(
     to right,
@@ -176,4 +158,8 @@
   background-size: 200% 100%;
   transition: background-size 1s, background-color 1s;
   cursor: pointer;
+}
+
+.submit-order > button:disabled:hover {
+  background-color: #f38c90;
 }

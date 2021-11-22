@@ -4,7 +4,6 @@ import { addSauceToCart } from "../actions/cart";
 import "../styles/Sauce.css";
 
 const Sauce = ({ id, name, price }) => {
-
   const dispatch = useDispatch();
 
   const images = {
@@ -29,14 +28,12 @@ const Sauce = ({ id, name, price }) => {
           <b>{name}</b> - <i>{price} PLN</i>
         </p>
       </div>
-      <button className="order-button" onClick={() => dispatch(addSauceToCart(id, name, 1, price))}>
-          <b>Add to cart</b>
-          <img
-            alt="cart"
-            src={images.cart}
-            style={{ height: "15px", width: "15px", marginLeft: "7px" }}
-          />
-        </button>
+      <button
+        className="order-button"
+        onClick={() => dispatch(addSauceToCart(id, name, 1, price))}
+      >
+        <b>Add to order</b>
+      </button>
     </div>
   );
 };
