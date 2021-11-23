@@ -48,10 +48,6 @@ const App = () => {
           dispatch(fetchPizzasError(error));
         });
     };
-    fetchPizzas();
-  }, [dispatch]);
-
-  useEffect(() => {
     const fetchSauces = () => {
       dispatch(fetchSaucesLoading());
       fetch("http://localhost:3333/api/sauce")
@@ -67,10 +63,6 @@ const App = () => {
           dispatch(fetchSaucesError(error));
         });
     };
-    fetchSauces();
-  }, [dispatch]);
-
-  useEffect(() => {
     const fetchIngredients = () => {
       dispatch(fetchIngredientsLoading());
       fetch("http://localhost:3333/api/ingredient")
@@ -86,6 +78,8 @@ const App = () => {
           dispatch(fetchIngredientsError(error));
         });
     };
+    fetchPizzas();
+    fetchSauces();
     fetchIngredients();
   }, [dispatch]);
 
