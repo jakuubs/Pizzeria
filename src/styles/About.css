@@ -1,0 +1,13 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #585858;
+    background-color:#f4f4f4;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    padding: 100px;
+    box-shadow: 5px 5px 45px 10px #777776;
+}
