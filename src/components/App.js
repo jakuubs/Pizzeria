@@ -96,9 +96,7 @@ const App = () => {
 
   useEffect(() => {
     const cart = read_cookie("cart");
-    console.log(cart);
     if (!Array.isArray(cart)) {
-      console.log(cart);
       dispatch(setCart(cart));
     }
   }, [dispatch]);
