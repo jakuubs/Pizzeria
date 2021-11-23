@@ -23,7 +23,9 @@ import Page from "./Page";
 import Footer from "./Footer";
 import PopUp from "./PopUp";
 import { useSelector } from "react-redux";
+import { read_cookie } from "sfcookies";
 import { clearOrder } from "../actions/order";
+import { setCart } from "../actions/cart";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -97,6 +99,15 @@ const App = () => {
       };
     }
   }, [dispatch, isDisplayed]);
+
+  useEffect(() => {
+    const cart = read_cookie("cart");
+    console.log(cart);
+    if (!Array.isArray(cart)) {
+      console.log(cart);
+      dispatch(setCart(cart));
+    }
+  }, [dispatch]);
 
   return (
     <Router>

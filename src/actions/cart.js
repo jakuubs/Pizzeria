@@ -39,6 +39,13 @@ export const changeSauceQuantity = (id, operation) => {
   };
 };
 
+export const setCart = (cart) => {
+  return {
+    type: "SET_CART",
+    payload: cart,
+  };
+};
+
 export const clearCart = () => {
   return {
     type: "CLEAR_CART",

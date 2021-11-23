@@ -1,3 +1,5 @@
+import { bake_cookie, delete_cookie } from "sfcookies";
+
 const initialState = {
   pizzas: [],
   sauces: [],
@@ -10,6 +12,11 @@ const cartReducer = (state = initialState, action) => {
     case "ADD_PIZZA_TO_CART":
       const pizza = action.payload;
       pizza.cartId = state.pizzaCartId;
+      bake_cookie("cart", {
+        ...state,
+        pizzas: [...state.pizzas, pizza],
+        pizzaCartId: state.pizzaCartId + 1,
+      });
       return {
         ...state,
         pizzas: [...state.pizzas, pizza],
@@ -18,6 +25,10 @@ const cartReducer = (state = initialState, action) => {
     case "DELETE_PIZZA_FROM_CART":
       const pizzasInCart = [...state.pizzas];
       pizzasInCart.splice(action.payload, 1);
+      bake_cookie("cart", {
+        ...state,
+        pizzas: pizzasInCart,
+      });
       return {
         ...state,
         pizzas: pizzasInCart,
@@ -32,11 +43,19 @@ const cartReducer = (state = initialState, action) => {
           ...updatedSauces[index],
           quantity: updatedQuantity,
         };
+        bake_cookie("cart", {
+          ...state,
+          sauces: updatedSauces,
+        });
         return {
           ...state,
           sauces: updatedSauces,
         };
       } else {
+        bake_cookie("cart", {
+          ...state,
+          sauces: [...state.sauces, action.payload],
+        });
         return {
           ...state,
           sauces: [...state.sauces, action.payload],
@@ -64,11 +83,18 @@ const cartReducer = (state = initialState, action) => {
           updatedSauces.splice(index, 1);
         }
       }
+      bake_cookie("cart", {
+        ...state,
+        sauces: updatedSauces,
+      });
       return {
         ...state,
         sauces: updatedSauces,
       };
+    case "SET_CART":
+      return action.payload;
     case "CLEAR_CART":
+      delete_cookie("cart");
       return {
         ...state,
         pizzas: [],
