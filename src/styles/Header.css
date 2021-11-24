@@ -42,7 +42,6 @@
 
 .cart-button-quantity button:hover {
   cursor: pointer;
-  transform: scale(1.05);
 }
 
 .cart-button-quantity button img {

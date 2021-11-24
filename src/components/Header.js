@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import pizza from "../images/pizza_planet.png";
 import images from "../images";
 import ShoppingCart from "./ShoppingCart";
@@ -44,7 +45,17 @@ const Header = () => {
         </button>
         {cartItemsQuantity > 0 && <span>{cartItemsQuantity}</span>}
       </div>
-      {isCartVisible && <ShoppingCart hideCart={hideShoppingCart} />}
+      <AnimatePresence>
+        {isCartVisible && (
+          <motion.div
+          style={{position: "fixed", right: 0, top: 0, zIndex: 10}}
+          initial={{x: 350}}
+          animate={{x: 0}}
+          exit={{x: 350}}>
+            <ShoppingCart hideCart={hideShoppingCart} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
