@@ -20,7 +20,7 @@ const ShoppingCart = ({ hideCart }) => {
   };
 
   return (
-    <div className="shoppingCart">
+    <div className="shopping-cart">
       <div className="cart-header">
         <button onClick={hideCart}>&#10006;</button>
         <h3>Your order:</h3>

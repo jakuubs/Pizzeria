@@ -36,7 +36,7 @@
   margin-bottom: 50px;
 }
 
-.pizzaInfo {
+.pizza-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,7 +44,7 @@
   flex-grow: 1;
 }
 
-.pizzaInfo ul {
+.pizza-info ul {
   display: inline;
   list-style: none;
   padding: 0;
@@ -52,6 +52,6 @@
   color: #585858;
 }
 
-.pizzaImage {
+.pizza-image {
   width: 100%;
 }

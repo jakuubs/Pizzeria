@@ -19,11 +19,11 @@ const Sauce = ({ id, name, price }) => {
   return (
     <div className="sauce">
       <img
-        className="sauceImage"
+        className="sauce-image"
         alt="sauce"
         src={images[name.toLowerCase()]}
       />
-      <div className="sauceInfo">
+      <div className="sauce-info">
         <p>
           <b>{name}</b> - <i>{price} PLN</i>
         </p>

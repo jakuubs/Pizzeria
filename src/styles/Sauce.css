@@ -26,7 +26,7 @@
   justify-self: start;
 }
 
-.sauceInfo {
+.sauce-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +34,7 @@
   flex-grow: 1;
 }
 
-.sauceImage {
+.sauce-image {
   width: 100%;
   transform: scale(0.75);
 }

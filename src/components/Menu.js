@@ -33,7 +33,7 @@ const Menu = () => {
       ) : (
         <>
           <h3>Pizzas</h3>
-          <div className="pizzaList">
+          <div className="pizza-list">
             {pizzas.map((pizza) => (
               <Pizza
                 key={pizza.id}
@@ -47,7 +47,7 @@ const Menu = () => {
             ))}
           </div>
           <h3>Sauces</h3>
-          <div className="sauceList">
+          <div className="sauce-list">
             {sauces.map((sauce) => (
               <Sauce
                 key={sauce.id}

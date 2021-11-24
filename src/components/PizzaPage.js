@@ -85,7 +85,7 @@ const PizzaPage = ({ match }) => {
 
   if (pizza !== undefined) {
     return (
-      <div className="pizzaPage">
+      <div className="pizza-page">
         {hasError && <p>Something went wrong!</p>}
         {isLoading ? (
           <Loader
