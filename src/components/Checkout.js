@@ -112,6 +112,10 @@ const Checkout = () => {
                 />
               ))}
             </div>
+            <div className="checkout-content-total">
+              <h4>Total</h4>
+              <p><i>{countTotal(pizzas, sauces, ingredients)} PLN</i></p>
+            </div>
           </>
         ) : (
           <h3 className="summary-empty">Your order is empty ;(</h3>
